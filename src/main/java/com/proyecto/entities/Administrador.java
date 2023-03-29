@@ -9,7 +9,6 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -18,37 +17,35 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "compradores")
+@Table(name = "administradores")
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class Comprador implements Serializable{
-    
-    public static final long serialVersionUID = 1L; 
+public class Administrador implements Serializable{
+
+    private static final long serialVersionUID = 1L; 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id; 
 
     private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
     private String correo; 
-    private Genero genero; 
-    public enum Genero {
-        HOMBRE, MUJER, OTRO
-    }
+    private String telefono; 
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Proveedor proveedor;  
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST,
+    mappedBy = "administrador") 
+    private List<Proveedor> proveedores;
 
-   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "comprador")
-   List<Pedido> pedidos; 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, 
+    mappedBy = "administrador")
+    private List<Comprador> compradores; 
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Administrador administrador; 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, 
+    mappedBy = "administrador") 
+    private List<Producto> productos; 
     
 }

@@ -18,35 +18,33 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "proveedores")
+@Table(name = "productos")
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class Proveedor implements Serializable{
-    
+public class Producto implements Serializable{
+
     private static final long serialVersionUID = 1L; 
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id; 
 
-    private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
+    private String códigoProducto; 
 
-    private String telefono; 
-    private String correo; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
+    private Proveedor proveedor; 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor")
-    private List<Comprador> compradores; 
-    
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "producto") 
+    List<Pedido> pedidos; 
+
+    @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Presentacion presentacion; 
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
     private Administrador administrador; 
-
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor") 
-    private List<Producto> productos; 
-
+    
 }

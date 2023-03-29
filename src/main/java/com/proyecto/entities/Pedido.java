@@ -1,7 +1,9 @@
 package com.proyecto.entities;
 
 import java.io.Serializable;
-import java.util.List;
+import java.time.LocalDate;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -10,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,14 +19,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "proveedores")
+@Table(name = "pedidos")
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class Proveedor implements Serializable{
+public class Pedido implements Serializable{
     
     private static final long serialVersionUID = 1L; 
 
@@ -33,20 +34,19 @@ public class Proveedor implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
     private int id; 
 
-    private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
+    private String codigoPedido; 
 
-    private String telefono; 
-    private String correo; 
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaPedido; 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor")
-    private List<Comprador> compradores; 
-    
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaSalida; 
+
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-    private Administrador administrador; 
+    private Comprador comprador; 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor") 
-    private List<Producto> productos; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
+    private Producto producto; 
+
 
 }
