@@ -11,5 +11,6 @@ public interface CompradorService {
     public void save(Comprador comprador); 
     public void deleteById(int idComprador); 
     public void delete(Comprador comprador); 
+    public Comprador findByIdPedido (int idPedido); 
 
 }

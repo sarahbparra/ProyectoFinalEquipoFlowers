@@ -45,5 +45,13 @@ public class CompradorServiceImpl implements CompradorService{
         
         compradorDao.deleteById(idComprador);
     }
+
+    @Override
+    public Comprador findByIdPedido(int idPedido) {
+        
+        return compradorDao.findByIdPedido(idPedido);  
+    }
+
+
     
 }
