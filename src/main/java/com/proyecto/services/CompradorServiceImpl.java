@@ -35,15 +35,15 @@ public class CompradorServiceImpl implements CompradorService{
     }
 
     @Override
-    public void deleteById(int idEstudiante) {
-        
-        compradorDao.deleteById(idEstudiante);
-    }
-
-    @Override
     public void delete(Comprador comprador) {
         
         compradorDao.delete(comprador);
+    }
+
+    @Override
+    public void deleteById(int idComprador) {
+        
+        compradorDao.deleteById(idComprador);
     }
     
 }

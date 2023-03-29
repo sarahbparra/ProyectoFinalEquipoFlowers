@@ -9,7 +9,7 @@ public interface CompradorService {
     public List<Comprador> findAll(); 
     public Comprador findById(int idComprador); 
     public void save(Comprador comprador); 
-    public void deleteById(int idEstudiante); 
+    public void deleteById(int idComprador); 
     public void delete(Comprador comprador); 
 
 }
