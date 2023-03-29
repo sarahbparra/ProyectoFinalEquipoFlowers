@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.dao.ProductoDao;
+import com.proyecto.entities.Comprador;
+import com.proyecto.entities.Pedido;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 
@@ -47,6 +49,16 @@ public class ProductoServiceImpl implements ProductoService{
     @Override
     public List<Producto> findByProveedor(Proveedor proveedor) {
         return productoDao.findByProveedor(proveedor);
+    }
+
+    @Override
+    public List<Producto> findByPedido(Pedido pedido) {
+       return productoDao.findByPedido(pedido);
+    }
+
+    @Override
+    public List<Producto> findByComprador(Comprador comprador) {
+        return productoDao.findByComprador(comprador);
     }
     
 }
