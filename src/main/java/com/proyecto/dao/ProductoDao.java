@@ -14,7 +14,7 @@ public interface ProductoDao extends JpaRepository<Producto, Integer>{
 long deleteByProveedor(Proveedor proveedor);
 
 List<Producto> findByProveedor(Proveedor proveedor);
-List<Producto> findByComprador(Comprador comprador);
-List<Producto> findByPedido(Pedido pedido);
+// List<Producto> findByComprador(Comprador comprador);
+// List<Producto> findByPedido(Pedido pedido);
 
 }

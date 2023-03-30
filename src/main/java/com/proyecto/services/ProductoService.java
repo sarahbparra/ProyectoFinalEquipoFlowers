@@ -15,6 +15,6 @@ public interface ProductoService {
     public void deleteById(int idProducto);
     public void deleteByProveedor(Proveedor proveedor);
     public List<Producto> findByProveedor(Proveedor proveedor);
-    public List<Producto> findByComprador(Comprador comprador);
-    public List<Producto> findByPedido (Pedido pedido);
+    // public List<Producto> findByComprador(Comprador comprador);
+    // public List<Producto> findByPedido (Pedido pedido);
 }
