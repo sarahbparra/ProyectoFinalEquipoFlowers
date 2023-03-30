@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.proyecto.entities.Administrador;
 
-public class AdministradorService {
+public interface AdministradorService {
 
     public List<Administrador> findAll();
 
