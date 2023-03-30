@@ -1,8 +1,6 @@
 package com.proyecto.entities;
-
 import java.io.Serializable;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -31,6 +29,7 @@ public class Proveedor implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
+
     private int id; 
 
     private String nombre; 
@@ -41,12 +40,23 @@ public class Proveedor implements Serializable{
     private String correo; 
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor")
-    private List<Comprador> compradores; 
+    private List<Comprador> compradores; //Un proveedor/vendedor puede tener muchos compradores/clientes
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
     private Administrador administrador; 
 
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor") 
-    private List<Producto> productos; 
+    private List<Producto> productos; //Un proveedor puede "vender" muchos productos
+
+
+
+
+    //Los campos de Vendedor van a ser nombre, apellidos,dirección del local, telefono y correo
+    // private int id;
+    // private String nombre;
+    // private String apellidos;
+    // private String telefonoEmpresa;
+    // private String correo;
+    // private String direccionLocal;
 
 }
