@@ -1,9 +1,5 @@
 package com.proyecto.entities;
 
-<<<<<<< HEAD
-public class Comprador {
-
-=======
 import java.io.Serializable;
 import java.util.List;
 
@@ -22,16 +18,16 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "compradores")
+@Table(name = "proveedores")
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
 
-public class Comprador implements Serializable{
+public class Proveedor implements Serializable{
     
-    public static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L; 
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
@@ -40,20 +36,17 @@ public class Comprador implements Serializable{
     private String nombre; 
     private String primerApellido; 
     private String segundoApellido; 
+
+    private String telefono; 
     private String correo; 
-    private Genero genero; 
-    public enum Genero {
-        HOMBRE, MUJER, OTRO
-    }
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Proveedor proveedor;  
-
-   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "comprador")
-   List<Pedido> pedidos; 
-
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Administrador administrador; 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor")
+    private List<Comprador> compradores; 
     
->>>>>>> ramaSarah
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
+    private Administrador administrador; 
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor") 
+    private List<Producto> productos; 
+
 }
