@@ -25,26 +25,26 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 
-public class Producto implements Serializable{
+public class Producto implements Serializable {
 
-    private static final long serialVersionUID = 1L; 
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id; 
+    private int id;
 
-    private String códigoProducto; 
+    private String códigoProducto;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-    private Proveedor proveedor; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Proveedor proveedor;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "producto") 
-    List<Pedido> pedidos; 
+    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "producto")
+    List<Pedido> pedidos;
 
-    @ManyToOne(fetch =  FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private Presentacion presentacion; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Presentacion presentacion;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-    private Administrador administrador; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Administrador administrador;
     
 }
