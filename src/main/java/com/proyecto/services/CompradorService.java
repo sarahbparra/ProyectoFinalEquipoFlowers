@@ -2,6 +2,7 @@ package com.proyecto.services;
 
 import java.util.List;
 
+import com.proyecto.entities.Administrador;
 import com.proyecto.entities.Comprador;
 
 public interface CompradorService {
@@ -12,5 +13,6 @@ public interface CompradorService {
     public void deleteById(int idComprador); 
     public void delete(Comprador comprador); 
     // public Comprador findByIdPedido (int idPedido); 
+    public void deleteByAdministrador(Administrador administrador);
 
 }
