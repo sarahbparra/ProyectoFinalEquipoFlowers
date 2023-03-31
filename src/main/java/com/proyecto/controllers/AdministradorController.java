@@ -40,7 +40,7 @@ public class AdministradorController {
     private AdministradorService administradorService;
 
     /** Este metodo devuelve un listado de Administradores: */
-    @GetMapping("/listarAdm")
+    @GetMapping("/listarAdmin")
     public ModelAndView listar() {
 
         List<Administrador> administradores = administradorService.findAll();
