@@ -21,6 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import com.proyecto.entities.Administrador;
 import com.proyecto.entities.Comprador;
+import com.proyecto.entities.Comprador.Genero;
 import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
 
@@ -109,15 +110,14 @@ public class AdministradorController {
         if (listadoNumeroscomprador != null) {
             compradorService.deleteByAdministrador(administrador);
             listadoNumeroscomprador.stream().forEach(n -> {
-                Comprador compradorObject = Comprador
-                        .builder()
+                Comprador compradorObject = Comprador.builder()
                         // aqui poner todas las variables de comprador?
                         .nombre(n)
-                        .primerApellido()
-                        .segundoApellido()
-                        .correo()
-                        .genero()
-                        .Administrador(administrador)
+                        .primerApellido(n)
+                        .segundoApellido(n)
+                        .correo(n)
+                        .genero(null)
+                        .administrador(administrador)
                         .build();
 
                 compradorService.save(compradorObject);
