@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.proyecto.entities.Administrador;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
+import com.proyecto.services.AdministradorService;
 import com.proyecto.services.ProductoService;
 import com.proyecto.services.ProveedorService;
 
@@ -27,7 +28,7 @@ public class MainController {
     public static final Logger LOG = Logger.getLogger("MainController");
 
      @Autowired
-    private AdministradorService administradorService; //He creado la clase AdministradorSErvice para que no me salte error aqui
+    private AdministradorService administradorService; //He creado la interfaz AdministradorSErvice para que no me salte error aqui
 
     @Autowired
     private ProveedorService proveedorService;
