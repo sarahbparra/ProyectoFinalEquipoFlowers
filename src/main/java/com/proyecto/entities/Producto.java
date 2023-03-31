@@ -45,7 +45,7 @@ public class Producto implements Serializable {
     
     //Propiedades que son exclusivas del vino:
     private double gradosAlcohol;
-    private Year añoCosecha;
+    private Year anyoCosecha;
     private Envejecimiento envejecimiento;
     public enum Envejecimiento {
         JOVEN, CRIANZA, RESERVA, GRAN_RESERVA
