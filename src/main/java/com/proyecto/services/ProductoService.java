@@ -12,9 +12,12 @@ public interface ProductoService {
     public List<Producto> findAll();
     public Producto findById(int idProducto);
     public void save(Producto producto);
+
+    public void delete(Producto producto);
     public void deleteById(int idProducto);
     public void deleteByProveedor(Proveedor proveedor);
     public List<Producto> findByProveedor(Proveedor proveedor);
+    
     // public List<Producto> findByComprador(Comprador comprador);
     // public List<Producto> findByPedido (Pedido pedido);
 }
