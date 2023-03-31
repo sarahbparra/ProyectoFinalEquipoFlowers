@@ -13,6 +13,7 @@ public interface CompradorService {
     public void deleteById(int idComprador); 
     public void delete(Comprador comprador); 
     // public Comprador findByIdPedido (int idPedido); 
-    public void deleteByAdministrador(Administrador administrador);
+    //Creo que yo (Irene) necesito este método:
+    // public void deleteByAdministrador(Administrador administrador);
 
 }

@@ -75,70 +75,71 @@ public class AdministradorController {
 
     }
 
-    /**
-     * Metodo que recibe los datos procedentes de los controladores del formulario y
-     * se muestre el último creado
-     */
-    @PostMapping("/altaModificacionAdministrador")
-    public String altaModificacionAdministrador(@ModelAttribute Administrador administrador,
-            @RequestParam(name = "compradores") String compradoresRecibidos) {
+//ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
+//     /**
+//      * Metodo que recibe los datos procedentes de los controladores del formulario y
+//      * se muestre el último creado
+//      */
+//     @PostMapping("/altaModificacionAdministrador")
+//     public String altaModificacionAdministrador(@ModelAttribute Administrador administrador,
+//             @RequestParam(name = "compradores") String compradoresRecibidos) {
 
-        // gracias al log nos da un mensaje de comprobación antes de procesar la
-        // información. Es una buena práctica de programación hacer esta comprobación
-        // previa
-        LOG.info("compradores recibidos: " + compradoresRecibidos);
+//         // gracias al log nos da un mensaje de comprobación antes de procesar la
+//         // información. Es una buena práctica de programación hacer esta comprobación
+//         // previa
+//         LOG.info("compradores recibidos: " + compradoresRecibidos);
 
-        // Se guarda el Administrador para despues poder acceder a él a la hora de
-        // meterle los compradores
-        administradorService.save(administrador);
+//         // Se guarda el Administrador para despues poder acceder a él a la hora de
+//         // meterle los compradores
+//         administradorService.save(administrador);
 
-        List<String> listadoNumeroscomprador = null; // la declaramos fuera,para poder utilizarla en varios sitios. Y le
-                                                     // asignamos null, porque dentro de un método siempre hay que
-                                                     // inicializarla (asignarle valor) para que funcione
+//         List<String> listadoNumeroscomprador = null; // la declaramos fuera,para poder utilizarla en varios sitios. Y le
+//                                                      // asignamos null, porque dentro de un método siempre hay que
+//                                                      // inicializarla (asignarle valor) para que funcione
 
-        // No queremos guardar compradores si no los hay, por eso ponemos el if
-        if (compradoresRecibidos != null) {
-            String[] arraycompradores = compradoresRecibidos.split(";"); // separa el array cada vez que encuentra un ;,
-            // podría pedirle que separase cada vez que
-            // encuentre un espacio
-            // Convertimos este array en una colección para luego pasarlo a flujo y trabajar
-            // con ese flujo:
-            listadoNumeroscomprador = Arrays.asList(arraycompradores);
-        }
+//         // No queremos guardar compradores si no los hay, por eso ponemos el if
+//         if (compradoresRecibidos != null) {
+//             String[] arraycompradores = compradoresRecibidos.split(";"); // separa el array cada vez que encuentra un ;,
+//             // podría pedirle que separase cada vez que
+//             // encuentre un espacio
+//             // Convertimos este array en una colección para luego pasarlo a flujo y trabajar
+//             // con ese flujo:
+//             listadoNumeroscomprador = Arrays.asList(arraycompradores);
+//         }
 
-        // si sí hay compradores, el flujo lo recorremos e introducimos
-        if (listadoNumeroscomprador != null) {
-            compradorService.deleteByAdministrador(administrador);
-            listadoNumeroscomprador.stream().forEach(n -> {
-                Comprador compradorObject = Comprador.builder()
-                        // aqui poner todas las variables de comprador?
-                        .nombre(n)
-                        .primerApellido(n)
-                        .segundoApellido(n)
-                        .correo(n)
-                        .genero(null)
-                        .administrador(administrador)
-                        .build();
+//         // si sí hay compradores, el flujo lo recorremos e introducimos
+//         if (listadoNumeroscomprador != null) {
+//             compradorService.deleteByAdministrador(administrador);
+//             listadoNumeroscomprador.stream().forEach(n -> {
+//                 Comprador compradorObject = Comprador.builder()
+//                         // aqui poner todas las variables de comprador?
+//                         .nombre(n)
+//                         .primerApellido(n)
+//                         .segundoApellido(n)
+//                         .correo(n)
+//                         .genero(null)
+//                         .administrador(administrador)
+//                         .build();
 
-                compradorService.save(compradorObject);
-            });
-        }
+//                 compradorService.save(compradorObject);
+//             });
+//         }
 
-        return "redirect:/listar";
-    }
+//         return "redirect:/listar";
+//     }
 
-    /**
-     * CRUD comprador: el administrador tiene que ser capaz de eliminar y actualizar
-     * compradores
-     */
+//     /**
+//      * CRUD comprador: el administrador tiene que ser capaz de eliminar y actualizar
+//      * compradores
+//      */
 
-    /**
-     * CRUD compradores: el administrador tiene que ser capaz de eliminar y
-     * actualizar compradores
-     */
+//     /**
+//      * CRUD compradores: el administrador tiene que ser capaz de eliminar y
+//      * actualizar compradores
+//      */
 
-    /**
-     * CRUD Producto: el administrador tiene que ser capaz de eliminar y actualizar
-     * productos. 
-     */
+//     /**
+//      * CRUD Producto: el administrador tiene que ser capaz de eliminar y actualizar
+//      * productos. 
+//      */
 }
