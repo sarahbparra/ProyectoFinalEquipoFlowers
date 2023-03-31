@@ -1,6 +1,7 @@
 package com.proyecto.entities;
 
 import java.io.Serializable;
+import java.time.Year;
 import java.util.List;
 
 import jakarta.persistence.CascadeType;
@@ -33,7 +34,41 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String códigoProducto;
+    //private String códigoProducto;
+    private Tipo tipo;
+    public enum Tipo {
+        VINO, QUESO
+    }
+    private String procedencia;
+    private String nombre;
+    private double precio;
+    
+    //Propiedades que son exclusivas del vino:
+    private double gradosAlcohol;
+    private Year añoCosecha;
+    private Envejecimiento envejecimiento;
+    public enum Envejecimiento {
+        JOVEN, CRIANZA, RESERVA, GRAN_RESERVA
+    }
+    private Color color;
+    public enum Color {
+        TINTO, BLANCO, ROSADO
+    }
+    private double volumen;
+    //Propiedades exclusivas del queso;
+    private double peso;
+    private Maduracion maduracion;
+    public enum Maduracion {
+        SEMICURADO, CURADO, VIEJO, AÑEJO
+    }
+    private ProcedenciaLeche procedenciaLeche;
+    public enum ProcedenciaLeche{
+        VACA, OVJEJA, CABRA, MEZCLA, BUFALA
+    }
+
+
+
+
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Proveedor proveedor;
