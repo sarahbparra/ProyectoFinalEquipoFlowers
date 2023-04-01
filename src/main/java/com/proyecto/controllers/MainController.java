@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proyecto.entities.Comprador;
@@ -57,6 +60,33 @@ public ModelAndView listarProducto() {
     
 // }
 
+//Método que  muestra el formulario que actualiza un procucto:
+
+// @GetMapping("/frmActualizar/{id}")
+// public String frmActualizarProducto(@PathVariable(name = "id") int idProducto, 
+// Model model) {
+
+//    Producto producto = productoService.findbyId(idProducto)
+
+
+//     List<Proveedor> proveedores = proveedorService.findAll();
+
+//     model.addAttribute("producto", producto);
+    
+
+//     return "views/formularioAltaProducto";
+// }
+
+
+//Método que borra productos
+
+@GetMapping("/borrar/{id}")
+public String borrarProducto(@PathVariable(name = "id") int idProducto) {
+
+productoService.delete(productoService.findById(idProducto));
+
+return "redirect:/listar";
+}
 
 
     

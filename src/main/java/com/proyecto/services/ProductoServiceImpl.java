@@ -51,6 +51,11 @@ public class ProductoServiceImpl implements ProductoService{
         return productoDao.findByProveedor(proveedor);
     }
 
+    @Override
+    public void delete(Producto producto) {
+        productoDao.delete(producto);
+    }
+
     // @Override
     // public List<Producto> findByPedido(Pedido pedido) {
     //    return productoDao.findByPedido(pedido);
