@@ -42,7 +42,7 @@ public class AdministradorController {
     /** MÉTODOS DE ADMINISTRADOR */
 
     /** Este metodo devuelve un listado de Administradores: */
-    @GetMapping("/listarAdmin")
+    @GetMapping("/listarAdministrador")
     public ModelAndView listar() {
 
         List<Administrador> administradores = administradorService.findAll();
@@ -62,7 +62,7 @@ public class AdministradorController {
     }
 
     /** Metodo de alta de administrador através de un formulario: */
-    @GetMapping("/frmAltaAdmin") // aqui es el nombre de la url que va a resoponder y le damos el nombre que
+    @GetMapping("/frmAltaAdministrador") // aqui es el nombre de la url que va a resoponder y le damos el nombre que
                                  // quieras no tiene porq ser igual que el nombre de abajo
     public String formularioAltaAdministrador(Model model) {
 

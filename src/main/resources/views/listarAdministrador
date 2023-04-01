@@ -1,0 +1,52 @@
+<!-- Se renderiza lo que se resuelve en el servidor, es decir, se pone en un lenguaje que entienda y pueda mostrar en la web -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Listado de administradores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>correo</th>
+                <th>telefono</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!-- La extensión "each" de thymeleaf (th) es el equivalente a un for mejorado -->
+            <tr th:each=" administrador : ${administradores}">
+                <td th:text="${administrador.id}"></td>
+                <td th:text="${administrador.nombre}"></td>
+                <td th:text="${administrador.correo}"></td>
+                <td th:text="${administrador.telefono}"></td>
+
+
+                <td>
+                    <!-- Esto muestra un enlace junto a cada administrador en el listado. Hay que crear el metodo actualizar en el MainConroller -->
+                    <a th:href="@{/frmActualizar/}+${administrador.id}">Actualizar</a>
+                    <!-- lo que hay tras la / es una url, es un patrón. Debe existir algo que responda exactamente a lo que pone aqui -->
+                    <a th:href="@{/borrar/}+${administrador.id}">Borrar</a>
+                    <a th:href="@{/detalles/}+${administrador.id}">Ver detalles</a>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div>
+        <a th:href="@{/formularioAltaAdministrador}">Formulario de alta de administradores</a>
+
+    </div>
+
+</body>
+
+</html>

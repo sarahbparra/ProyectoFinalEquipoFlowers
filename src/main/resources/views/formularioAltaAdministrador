@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Formulario de alta/modificación de administrador</h1>
+    <form th:object="${administrador}" th:action="@{/altaModificacionAdministrador}" method="post"
+    enctype="multipart/form-data">
+
+        <!-- Guardar en un input oculto el id del administrador: -->
+        <input type="hidden" name="id" th:value="${administrador.id} ">
+        <!-- no hace falta evaluar el id del administrador con un ternario -->
+
+
+        <!-- Resto de campos: -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" th:field="*{nombre}" required>
+        <!-- input no necesita cierre -->
+        <!-- th:field rige qué campo se rellena, name se puede quitar -->
+        <!-- Para que no pueda ser null en el formulario, se pone required. Si no se completa, no sale de la vista y no se envia al servidor-->
+
+        <label for="correo">Correo:</label>
+        <input type="text" name="correo" id="correo" th:field="*{correo}" required>
+
+        <label for="telefono">Telefon:</label>
+        <input type="text" name="telefono" id="telefono" th:field="*{telefono}">
+
+     <!-- NOTA, QUEDA AÑADIR PROVEEDORES, COMPRADORES Y PRODUCTOS A SU CARGO -->
+
+        <!-- Permitir que se suba un archivo de imagen: -->
+        <!-- <label for="imagen">Foto:</label>
+        <input type="file" id="imagen" name="imagen"> -->
+
+
+        <!-- Para enviar el formulario: -->
+        <input type="submit" value="ALTA">
+    </form>
+
+</body>
+
+</html>
