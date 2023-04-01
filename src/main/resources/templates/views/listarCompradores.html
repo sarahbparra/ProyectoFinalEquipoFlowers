@@ -38,8 +38,8 @@
                 <td th:text="${comprador.administrador.id}"></td>
 
                 <td>
-                    <a th:href="@{/frmActualizar}+${comprador.id}">Modificar datos</a>
-                    <a th:href="@{/borrar}+${comprador.id}">Eliminar usuario</a>
+                    <a th:href="@{/compradores/frmActualizarComprador/}+${comprador.id}">Modificar datos</a>
+                    <a th:href="@{/compradores/borrar/}+${comprador.id}">Eliminar usuario</a>
                 </td>
 
             </tr>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -75,6 +76,33 @@ public class CompradorController {
 
         return "redirect:/compradores/listar"; 
 
+    }
+
+    //Método para poder actualizar los datos de un comprador 
+
+    @GetMapping("/frmActualizarComprador/{id}")
+    public String frmActualizarComprador(@PathVariable(name = "id") int idComprador, Model model){
+
+        //Para evitar el null pointer exception
+        Comprador comprador = compradorService.findById(idComprador); 
+
+        List<Administrador> administradores = administradorService.findAll(); 
+
+        model.addAttribute("comprador", comprador); 
+        model.addAttribute("administradores", administradores); 
+
+        return "views/formularioAltaComprador"; 
+    }
+
+
+    //Método para eliminar compradores 
+
+    @GetMapping("/borrar/{id}")
+    public String borrarComprador(@PathVariable(name = "id") int idComprador){
+
+        compradorService.delete(compradorService.findById(idComprador));
+        
+        return "redirect:/compradores/listar"; 
     }
 
 
