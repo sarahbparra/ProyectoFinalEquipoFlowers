@@ -19,10 +19,10 @@ public interface AdministradorService {
     /**
      * Método que busca un administrador por su identificador.
      *
-     * @param idAdministrador Identificador del administrador a buscar.
+     * @param id Identificador del administrador a buscar.
      * @return Administrador con el identificador especificado.
      */
-    public Administrador findById(int idAdministrador);
+    public Administrador findById(int id);
 
     /**
      * Guarda un administrador en la base de datos.
@@ -34,9 +34,9 @@ public interface AdministradorService {
     /**
      * Elimina un administrador de la base de datos por su identificador.
      *
-     * @param idAdministrador Identificador del administrador a eliminar.
+     * @param id Identificador del administrador a eliminar.
      */
-    public void deleteById(int idAdministrador);
+    public void deleteById(int id);
 
     /**
      * Elimina un administrador de la base de datos.
@@ -47,7 +47,7 @@ public interface AdministradorService {
 
     /**
      * No es necesario un metodo update, porque el save inserta o actualiza, en
-     * dependencia de que el idAdministrador exista o no, es decir, si no existe lo
+     * dependencia de que el id exista o no, es decir, si no existe lo
      * crea, y si
      * existe actualiza la informacion.
      */

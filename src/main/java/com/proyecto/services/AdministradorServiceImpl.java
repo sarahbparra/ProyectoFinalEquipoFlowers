@@ -41,23 +41,23 @@ public class AdministradorServiceImpl implements AdministradorService {
      * Este método encuentra y devuelve un administrador en la base de datos por su
      * ID.
      * 
-     * @param idAdministrador - el ID del administrador a buscar.
+     * @param id - el ID del administrador a buscar.
      * @return Administrador - el administrador encontrado, si existe.
      */
     @Override
-    public Administrador findById(int idAdministrador) {
-        return administradorDao.findById(idAdministrador).get();
+    public Administrador findById(int id) {
+        return administradorDao.findById(id).get();
     }
 
     /**
      * 
-     * Este método guarda un administrador en la base de datos.
+     * Este método guarda un nuevo administrador en la base de datos o guardar cambios en un administrador previamente creado.
      * 
      * @param Administrador - el administrador a guardar.
      */
     @Override
-    public void save(Administrador Administrador) {
-        administradorDao.save(Administrador);
+    public void save(Administrador administrador) {
+        administradorDao.save(administrador);
     }
 
     /**
@@ -75,10 +75,10 @@ public class AdministradorServiceImpl implements AdministradorService {
      * 
      * Este método elimina un administrador de la base de datos por su ID.
      * 
-     * @param idAdministrador - el ID del administrador a eliminar.
+     * @param id - el ID del administrador a eliminar.
      */
     @Override
-    public void deleteById(int idAdministrador) {
-        administradorDao.deleteById(idAdministrador);
+    public void deleteById(int id) {
+        administradorDao.deleteById(id);
     }
 }

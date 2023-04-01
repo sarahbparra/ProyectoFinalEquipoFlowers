@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -21,9 +22,8 @@ import com.proyecto.entities.Administrador;
 import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
 
-
 @Controller
-@RequestMapping("/")
+@RequestMapping("/administradores")
 
 public class AdministradorController {
     /**
@@ -36,14 +36,15 @@ public class AdministradorController {
      * Logger registra todo lo que pasa en esta clase, MainController, para saber
      * todo lo que pasa y poder "hacer un analisis postmortem" si algo va mal
      */
-    private static final Logger LOG = Logger.getLogger("MainController");
+    private static final Logger LOG = Logger.getLogger("AdministradorController");
 
-    /** Métodos correspondientes a Administrador: */
     @Autowired
     private AdministradorService administradorService;
 
     @Autowired
     private CompradorService compradorService;
+
+    /** MÉTODOS DE ADMINISTRADOR */
 
     /** Este metodo devuelve un listado de Administradores: */
     @GetMapping("/listarAdmin")
@@ -52,9 +53,17 @@ public class AdministradorController {
         List<Administrador> administradores = administradorService.findAll();
 
         ModelAndView mav = new ModelAndView("views/listarAdministrador");
-        mav.addObject("Administradores", administradores);
+        mav.addObject("administradores", administradores);
 
         return mav;
+    }
+
+    
+    @GetMapping("/{id}")
+    public String findAdministradorById(@PathVariable("id") int id, Model model) {
+        Administrador administrador = administradorService.findById(id);
+        model.addAttribute("administrador", administrador);
+        return "administradores/id";
     }
 
     /** Metodo de alta de administrador através de un formulario: */
@@ -68,98 +77,65 @@ public class AdministradorController {
         model.addAttribute("administrador", administrador);
         model.addAttribute("administradors", administradores);
 
-        return "views/formularioAltaAdministrador";
-
-
-
-
-
-      
-
-    @GetMapping
-    public ResponseEntity<List<Administrador>> getAllAdministradores() {
-        List<Administrador> administradores = administradorService.getAllAdministradores();
-        return ResponseEntity.ok(administradores);
+        return "formularioAltaAdministrador";
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<Administrador> getAdministradorById(@PathVariable int id) {
-        Administrador administrador = administradorService.getAdministradorById(id);
-        return ResponseEntity.ok(administrador);
+    @PostMapping("/guardar")
+    public String saveAdministrador(@ModelAttribute("administrador") Administrador administrador) {
+        administradorService.save(administrador);
+        return "redirect:/administradores";
     }
 
-    @PostMapping
-    public ResponseEntity<Administrador> createAdministrador(@RequestBody Administrador administrador) {
-        Administrador newAdministrador = administradorService.createAdministrador(administrador);
-        return ResponseEntity.status(HttpStatus.CREATED).body(newAdministrador);
-    }
+    // ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
+    // /**
+    // * Metodo que recibe los datos procedentes de los controladores del formulario
+    // y
+    // * se muestre el último creado
+    // */
+    // @PostMapping("/altaModificacionAdministrador")
+    // public String altaModificacionAdministrador(@ModelAttribute Administrador
+    // administrador,
+    // @RequestParam(name = "compradores") String compradoresRecibidos) {
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Administrador> updateAdministrador(@PathVariable int id, @RequestBody Administrador administrador) {
-        Administrador updatedAdministrador = administradorService.updateAdministrador(id, administrador);
-        return ResponseEntity.ok(updatedAdministrador);
-    }
+    // // gracias al log nos da un mensaje de comprobación antes de procesar la
+    // // información. Es una buena práctica de programación hacer esta comprobación
+    // // previa
+    // LOG.info("compradores recibidos: " + compradoresRecibidos);
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteAdministrador(@PathVariable int id) {
-        administradorService.deleteAdministrador(id);
-        return ResponseEntity.noContent().build();
-    }
-}
+    // // Se guarda el Administrador para despues poder acceder a él a la hora de
+    // // meterle los compradores
+    // administradorService.save(administrador);
 
+    // List<String> listadoNumeroscomprador = null; // la declaramos fuera,para
+    // poder utilizarla en varios sitios. Y le
+    // // asignamos null, porque dentro de un método siempre hay que
+    // // inicializarla (asignarle valor) para que funcione
 
-//ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
-//     /**
-//      * Metodo que recibe los datos procedentes de los controladores del formulario y
-//      * se muestre el último creado
-//      */
-//     @PostMapping("/altaModificacionAdministrador")
-//     public String altaModificacionAdministrador(@ModelAttribute Administrador administrador,
-//             @RequestParam(name = "compradores") String compradoresRecibidos) {
+    // // No queremos guardar compradores si no los hay, por eso ponemos el if
+    // if (compradoresRecibidos != null) {
 
-//         // gracias al log nos da un mensaje de comprobación antes de procesar la
-//         // información. Es una buena práctica de programación hacer esta comprobación
-//         // previa
-//         LOG.info("compradores recibidos: " + compradoresRecibidos);
+    // // Convertimos este array en una colecci
+    //
+    // listadoNumeroscomprador = Arrays.asList(arraycompradores);
+    //
+    // }
 
-//         // Se guarda el Administrador para despues poder acceder a él a la hora de
-//         // meterle los compradores
-//         administradorService.save(administrador);
+    // // si sí hay compradores, el flujo lo reco
+    // if (listadoNumeroscomprador != null) {
+    //
+    // compradorService.deleteByAdministrador(administrador);
 
-//         List<String> listadoNumeroscomprador = null; // la declaramos fuera,para poder utilizarla en varios sitios. Y le
-//                                                      // asignamos null, porque dentro de un método siempre hay que
-//                                                      // inicializarla (asignarle valor) para que funcione
+    // Comprador compradorObject = Comprador.builder()
+    // // aqui poner todas las variables de comprador?
+    //
+    // .primerApellido(n)
 
-//         // No queremos guardar compradores si no los hay, por eso ponemos el if
-//         if (compradoresRecibidos != null) {
-//             String[] arraycompradores = compradoresRecibidos.split(";"); // separa el array cada vez que encuentra un ;,
-//             // podría pedirle que separase cada vez que
-//             // encuentre un espacio
-//             // Convertimos este array en una colección para luego pasarlo a flujo y trabajar
-//             // con ese flujo:
-//             listadoNumeroscomprador = Arrays.asList(arraycompradores);
-//         }
+    // .correo(n)
+    // .genero(nu
+    // .administrador(administra
 
-//         // si sí hay compradores, el flujo lo recorremos e introducimos
-//         if (listadoNumeroscomprador != null) {
-//             compradorService.deleteByAdministrador(administrador);
-//             listadoNumeroscomprador.stream().forEach(n -> {
-//                 Comprador compradorObject = Comprador.builder()
-//                         // aqui poner todas las variables de comprador?
-//                         .nombre(n)
-//                         .primerApellido(n)
-//                         .segundoApellido(n)
-//                         .correo(n)
-//                         .genero(null)
-//                         .administrador(administrador)
-//                         .build();
+    //
+    // );
+    //
 
-//                 compradorService.save(compradorObject);
-//             });
-//         }
-
-//         return "redirect:/listar";
-//     }
-
-//     
 }
