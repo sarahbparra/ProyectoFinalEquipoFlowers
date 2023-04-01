@@ -1,7 +1,10 @@
 package com.proyecto.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -37,6 +40,11 @@ public class Comprador implements Serializable{
     private String primerApellido; 
     private String segundoApellido; 
     private String correo; 
+    private String telefono; 
+
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechaNacimiento; 
+
     private Genero genero; 
     public enum Genero {
         HOMBRE, MUJER, OTRO

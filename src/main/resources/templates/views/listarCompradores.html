@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listado de Compradores </h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Primer Apellido</th>
+                <th>Segundo Apellido</th>
+                <th>Fecha de Nacimiento</th>
+                <th>Género</th>
+                <th>Número de Teléfono</th>
+                <th>Correo</th>
+                <th>Administrador</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each=" comprador : ${compradores}">
+                <td th:text="${comprador.id}"></td>
+                <td th:text="${comprador.nombre}"></td>
+                <td th:text="${comprador.primerApellido}"></td>
+                <td th:text="${comprador.segundoApellido}"></td>
+                <td th:text="${comprador.fechaNacimiento}"></td>
+                <td th:text="${comprador.genero}"></td>
+                <td th:text="${comprador.telefono}"></td>
+                <td th:text="${comprador.correo}"></td>
+                <td th:text="${comprador.administrador.id}"></td>
+
+                <td>
+                    <a th:href="@{/frmActualizar}+${comprador.id}">Modificar datos</a>
+                    <a th:href="@{/borrar}+${comprador.id}">Eliminar usuario</a>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+     </table>   
+
+     <div>
+        <a th:href="@{/frmAltaComprador}"> Datos para dar de Alta a un Comprador </a>
+     </div>
+</body>
+</html>
