@@ -1,6 +1,7 @@
 package com.proyecto.controllers;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
@@ -18,8 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Pedido;
+import com.proyecto.entities.Producto;
+import com.proyecto.services.CompradorService;
 import com.proyecto.services.PedidoService;
+import com.proyecto.services.ProductoService;
 
 
 
@@ -33,6 +38,12 @@ public class PedidoController {
     @Autowired
     private PedidoService pedidoService;
 
+    @Autowired
+    private CompradorService compradorService;
+
+    @Autowired
+    private ProductoService productoService;
+
 
     /* El metodo siguiente devuelve un listado de pedidos */
     @GetMapping("/listar")
@@ -44,67 +55,36 @@ public class PedidoController {
         return mav;
     }
 
-    // /**
-    //  * Muestra el formulario de alta de 
-    //  */
-    // @GetMapping("/frmAltaEmpleado")
-    // public String formularioAltaEmpleado(Model model) {
-    //     List<Departamento> departamento = departamentoService.findAll();
-    //     Empleado empleado = new Empleado();
-    //     model.addAttribute("empleado", empleado);
-    //     model.addAttribute("departamento", departamento);
+    /**
+     * Muestra el formulario de alta de un pedido
+     */
+    @GetMapping("/frmAltaPedido")
+    public String formularioAltaPedido(Model model) {
+        List<Comprador> compradores = compradorService.findAll();
+        List<Producto>productos = productoService.findAll();
+        model.addAttribute("pedido", new Pedido());
+        model.addAttribute("compradores", compradores);
+        model.addAttribute("productos", productos);
+        return "views/formularioAltaPedido";
+    }
 
-    //     return "views/formularioAltaEmpleado";
-    // }
+    /**
+     * Metodo que recibe los datos procedentes de los controles del formulario
+     */
+    @PostMapping("/altaModificacionPedido")
+    public String altaPedido(@ModelAttribute Pedido pedido,
+            @RequestParam("productos") int[] productosRecibidos) {
+        LOG.info("productos recibidos: " + productosRecibidos);
 
-    // /**
-    //  * Metodo que recibe los datos procedentes de los controles del formulario
-    //  */
-    // @PostMapping("/altaModificacionEmpleado")
-    // public String altaEmpleado(@ModelAttribute Empleado empleado,
-    //         @RequestParam("numerosTelefonos") String telefonosRecibidos,
-    //         @RequestParam("listadoCorreos") String correosRecibidos) {
-    //     LOG.info("telefonos recibidos: " + telefonosRecibidos);
-    //     LOG.info("correos recibidos: " + correosRecibidos);
-
-    //     empleadoService.save(empleado);
-    //     List<String> listadoNumerosTelefonos = null;
-    //     if (telefonosRecibidos != null) {
-    //         String[] arrayTelefonos = telefonosRecibidos.split(";");
-    //         listadoNumerosTelefonos = Arrays.asList(arrayTelefonos);
-    //     }
-    //     if (listadoNumerosTelefonos != null) {
-    //         telefonoService.deleteByEmpleado(empleado);
-    //         listadoNumerosTelefonos.stream().forEach(n -> {
-    //             Telefono telefonoObject = Telefono
-    //                     .builder()
-    //                     .numero(n)
-    //                     .empleado(empleado)
-    //                     .build();
-    //             telefonoService.save(telefonoObject);
-    //         });
-    //     }
-    //     // correos
-    //     List<String> listadoCorreos = null;
-    //     if (correosRecibidos != null) {
-    //         String[] arrayCorreos = correosRecibidos.split(";");
-
-    //         listadoCorreos = Arrays.asList(arrayCorreos);
-    //     }
-    //     if (listadoCorreos != null) {
-    //         correoService.deleteByEmpleado(empleado);
-    //         listadoCorreos.stream().forEach(c -> {
-    //             Correo correoObject = Correo
-    //                     .builder()
-    //                     .email(c)
-    //                     .empleado(empleado)
-    //                     .build();
-    //             correoService.save(correoObject);
-    //         });
-
-    //     }
-    //     return "redirect:/listar";
-    // }
+        List<Producto> productos = new ArrayList<>();
+        for(int productoId : productosRecibidos){
+            productos.add(productoService.findById(productoId));
+        }
+        pedido.setProductos(productos);
+        pedidoService.save(pedido);
+ 
+        return "redirect:/pedido/listar";
+    }
 
     // // Método que borra empleados
     // @GetMapping("/borrar/{id}")

@@ -1,5 +1,6 @@
 package com.proyecto.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +19,12 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public List<Producto> findAll() {
-        return productoDao.findAll();
+        List<Producto> productos = new ArrayList<>();
+        for(int i=0; i<5; i++){
+            productos.add(new Producto(i, "codigo-prod-" + i, null, null, null, null));
+        }
+        return productos;
+        //return productoDao.findAll();
     }
 
     @Override
