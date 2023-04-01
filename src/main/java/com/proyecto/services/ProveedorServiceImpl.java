@@ -40,6 +40,12 @@ public class ProveedorServiceImpl implements ProveedorService{
         proveedorDao.deleteById(idProveedor);
     }
 
+    @Override
+    @Transactional
+    public void delete(Proveedor proveedor) {
+        proveedorDao.delete(proveedor);
+        
+    }
     
     
 }

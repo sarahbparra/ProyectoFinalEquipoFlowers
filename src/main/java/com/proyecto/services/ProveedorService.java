@@ -8,4 +8,5 @@ public interface ProveedorService {
      public Proveedor findById(int idProveedor); //buscame el vendedor por su id 
      public void save(Proveedor proveedor);   
      public void deleteById(int idProveedor);
+     public void delete(Proveedor proveedor);
 }

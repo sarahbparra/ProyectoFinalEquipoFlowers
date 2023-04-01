@@ -42,6 +42,13 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     @Transactional
+    public void delete(Producto producto) {
+        productoDao.delete(producto);
+    }
+        
+    
+    @Override
+    @Transactional
     public void deleteByProveedor(Proveedor proveedor) {
         productoDao.deleteByProveedor(proveedor);
     }
