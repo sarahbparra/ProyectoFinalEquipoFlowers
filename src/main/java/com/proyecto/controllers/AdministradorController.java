@@ -1,29 +1,26 @@
 package com.proyecto.controllers;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
+
 import com.proyecto.entities.Administrador;
-import com.proyecto.entities.Comprador;
-import com.proyecto.entities.Comprador.Genero;
 import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
+
 
 @Controller
 @RequestMapping("/")
@@ -73,7 +70,43 @@ public class AdministradorController {
 
         return "views/formularioAltaAdministrador";
 
+
+
+
+
+      
+
+    @GetMapping
+    public ResponseEntity<List<Administrador>> getAllAdministradores() {
+        List<Administrador> administradores = administradorService.getAllAdministradores();
+        return ResponseEntity.ok(administradores);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Administrador> getAdministradorById(@PathVariable int id) {
+        Administrador administrador = administradorService.getAdministradorById(id);
+        return ResponseEntity.ok(administrador);
+    }
+
+    @PostMapping
+    public ResponseEntity<Administrador> createAdministrador(@RequestBody Administrador administrador) {
+        Administrador newAdministrador = administradorService.createAdministrador(administrador);
+        return ResponseEntity.status(HttpStatus.CREATED).body(newAdministrador);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Administrador> updateAdministrador(@PathVariable int id, @RequestBody Administrador administrador) {
+        Administrador updatedAdministrador = administradorService.updateAdministrador(id, administrador);
+        return ResponseEntity.ok(updatedAdministrador);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteAdministrador(@PathVariable int id) {
+        administradorService.deleteAdministrador(id);
+        return ResponseEntity.noContent().build();
+    }
+}
+
 
 //ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
 //     /**
@@ -128,18 +161,5 @@ public class AdministradorController {
 //         return "redirect:/listar";
 //     }
 
-//     /**
-//      * CRUD comprador: el administrador tiene que ser capaz de eliminar y actualizar
-//      * compradores
-//      */
-
-//     /**
-//      * CRUD compradores: el administrador tiene que ser capaz de eliminar y
-//      * actualizar compradores
-//      */
-
-//     /**
-//      * CRUD Producto: el administrador tiene que ser capaz de eliminar y actualizar
-//      * productos. 
-//      */
+//     
 }

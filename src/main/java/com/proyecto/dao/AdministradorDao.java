@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import com.proyecto.entities.Administrador;
 
+import jakarta.transaction.Transactional;
+
 /**
  * 
  * Esta interfaz define la capa DAO para la entidad Administrador.
@@ -12,6 +14,7 @@ import com.proyecto.entities.Administrador;
  * entidad.
  */
 @Repository
+@Transactional //¿Sería de yacarta?
 public interface AdministradorDao extends JpaRepository<Administrador, Integer> {
     
 }
