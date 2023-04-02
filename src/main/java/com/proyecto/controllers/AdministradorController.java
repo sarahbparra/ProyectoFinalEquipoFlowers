@@ -33,7 +33,6 @@ public class AdministradorController {
     @Autowired
     private CompradorService compradorService;
 
-   
     /**
      * Este metodo devuelve un listado de Administradores en la url
      * //http://localhost:8080/admin/listarAdministrador
@@ -54,14 +53,14 @@ public class AdministradorController {
     public String findAdministradorById(@PathVariable("id") int id, Model model) {
         Administrador administrador = administradorService.findById(id);
         model.addAttribute("administrador", administrador);
-        return "/id";
+        return "redirect:/admin/listarAdministrador";
     }
 
     /**
      * Metodo de alta de administrador através de un formulario, usando la URL
      * http://localhost:8080/admin/frmAltaAdministrador :
      */
-    // LLEVA AL FORMULARIO, NO ACTUALIZA
+    // FUNCIONA, lleva al formulario y crea nuevo admin que añade a listar
     @GetMapping("/frmAltaAdministrador") // aqui es el nombre de la url que va a resoponder y le damos el nombre que
     // quieras no tiene porq ser igual que el nombre de abajo
     public String formularioAltaAdministrador(Model model) {
@@ -72,13 +71,11 @@ public class AdministradorController {
         model.addAttribute("administrador", administrador);
         model.addAttribute("administradores", administradores);
 
-        
         return "views/formularioAltaAdministrador";
     }
 
-  
-
-    //Método para que almacena los datos del administrador 
+    // Método para que almacena los datos del administrador
+     // FUNCIONA
     @PostMapping("/altaModificacionAdministrador")
     public String altaModificacionAdministrador
     // (@ModelAttribute Administrador administrador) {
@@ -87,13 +84,30 @@ public class AdministradorController {
         return "redirect:/admin/listarAdministrador";
     }
 
-      //FUNCIONA
-      @GetMapping("/borrar/{id}")
-      public String borrarAdministrador(@PathVariable(name = "id") int id) {
-  
-          administradorService.delete(administradorService.findById(id));
-          return "redirect:/admin/listarAdministrador";
-      }
+    // Método para poder actualizar los datos de un administrador
+ // FUNCIONA
+    @GetMapping("/frmActualizarAdministrador/{id}")
+    public String frmActualizaradministrador(@PathVariable(name = "id") int id, Model model) {
+
+        // Para evitar el null pointer exception
+        Administrador administrador = administradorService.findById(id);
+
+        List<Administrador> administradores = administradorService.findAll();
+
+        model.addAttribute("administrador", administrador);
+        model.addAttribute("administradores", administradores);
+
+        return "views/formularioAltaAdministrador";
+
+    }
+
+    // FUNCIONA
+    @GetMapping("/borrar/{id}")
+    public String borrarAdministrador(@PathVariable(name = "id") int id) {
+
+        administradorService.delete(administradorService.findById(id));
+        return "redirect:/admin/listarAdministrador";
+    }
 
     // ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
     // /**

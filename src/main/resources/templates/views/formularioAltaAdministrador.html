@@ -10,7 +10,9 @@
 
 <body>
     <h1>Formulario de alta/modificación de administrador</h1>
-    <form th:object="${administrador}" th:action="@{/altaModificacionAdministrador}" method="post"
+    <form th:object="${administrador}" 
+    th:action="@{/admin/altaModificacionAdministrador}" 
+    method="post"
         enctype="multipart/form-data">
         <!-- h:action es un atributo de Thymeleaf que se utiliza para establecer la acción que se realizará cuando se envíe el formulario. En este caso, se establece la acción a la URL "/altaModificacionAdministrador", lo que significa que cuando se envíe el formulario, los datos se enviarán a esa URL para su procesamiento en el servidor. El atributo th:action se usa para generar la URL de acción en el HTML resultante de la plantilla Thymeleaf. El atributo "method" se utiliza para especificar el método HTTP que se utilizará para enviar los datos del formulario, que en este caso es "post". -->
 
@@ -29,7 +31,7 @@
         <label for="correo">Correo:</label>
         <input type="text" name="correo" id="correo" th:field="*{correo}" required>
 
-        <label for="telefono">Telefon:</label>
+        <label for="telefono">Telefono:</label>
         <input type="text" name="telefono" id="telefono" th:field="*{telefono}">
 
         <!-- NOTA, QUEDA AÑADIR PROVEEDORES, COMPRADORES Y PRODUCTOS A SU CARGO -->
