@@ -17,6 +17,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
 import com.proyecto.entities.Administrador;
 import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
@@ -45,7 +57,7 @@ public class AdministradorController {
 
     /** MÉTODOS DE ADMINISTRADOR */
 
-    /** Este metodo devuelve un listado de Administradores: */
+    /** Este metodo devuelve un listado de Administradores en la url //http://localhost:8080/admin/listarAdministrador */
     @GetMapping("/listarAdministrador")
     public ModelAndView listar() {
 
@@ -79,10 +91,17 @@ public class AdministradorController {
         return "views/formularioAltaAdministrador";
     }
 
-    @PostMapping("/guardar")
-    public String saveAdministrador(@ModelAttribute("administrador") Administrador administrador) {
+    @GetMapping("/borrar/{id}")
+public String borrarAdministrador(@PathVariable(name = "id") int id){
+
+administradorService.delete(administradorService.findById(id));
+return "redirect:/administradores/listar"; 
+}
+
+    @PostMapping("/altaModificacionAdministrador")
+    public String altaAdministrador(@ModelAttribute("administrador") Administrador administrador) {
         administradorService.save(administrador);
-        return "redirect:/administradores";
+        return "redirect:/administradores/listar";
     }
 
     // ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
