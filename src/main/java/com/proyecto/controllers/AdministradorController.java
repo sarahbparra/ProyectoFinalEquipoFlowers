@@ -1,6 +1,5 @@
 package com.proyecto.controllers;
 
-
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -28,22 +27,19 @@ public class AdministradorController {
      * la peticion
      */
 
-    /**
-     * Logger registra todo lo que pasa en esta clase, MainController, para saber
-     * todo lo que pasa y poder "hacer un analisis postmortem" si algo va mal
-     */
-    private static final Logger LOG = Logger.getLogger("AdministradorController");
-
     @Autowired
     private AdministradorService administradorService;
 
     @Autowired
     private CompradorService compradorService;
 
-    /** MÉTODOS DE ADMINISTRADOR */
-
-    /** Este metodo devuelve un listado de Administradores en la url //http://localhost:8080/admin/listar */
-    @GetMapping("/listar")
+   
+    /**
+     * Este metodo devuelve un listado de Administradores en la url
+     * //http://localhost:8080/admin/listarAdministrador
+     */
+    // FUNCIONA
+    @GetMapping("/listarAdministrador")
     public ModelAndView listar() {
 
         List<Administrador> administradores = administradorService.findAll();
@@ -54,40 +50,50 @@ public class AdministradorController {
         return mav;
     }
 
-    
     @GetMapping("/{id}")
     public String findAdministradorById(@PathVariable("id") int id, Model model) {
         Administrador administrador = administradorService.findById(id);
         model.addAttribute("administrador", administrador);
-        return "administradores/id";
+        return "/id";
     }
 
-    /** Metodo de alta de administrador através de un formulario: */
+    /**
+     * Metodo de alta de administrador através de un formulario, usando la URL
+     * http://localhost:8080/admin/frmAltaAdministrador :
+     */
+    // LLEVA AL FORMULARIO, NO ACTUALIZA
     @GetMapping("/frmAltaAdministrador") // aqui es el nombre de la url que va a resoponder y le damos el nombre que
-                                 // quieras no tiene porq ser igual que el nombre de abajo
+    // quieras no tiene porq ser igual que el nombre de abajo
     public String formularioAltaAdministrador(Model model) {
 
         List<Administrador> administradores = administradorService.findAll();
         Administrador administrador = new Administrador();
 
         model.addAttribute("administrador", administrador);
-        model.addAttribute("administradors", administradores);
+        model.addAttribute("administradores", administradores);
 
+        
         return "views/formularioAltaAdministrador";
     }
 
-    @GetMapping("/borrar/{id}")
-public String borrarAdministrador(@PathVariable(name = "id") int id){
+  
 
-administradorService.delete(administradorService.findById(id));
-return "redirect:/administradores/listar"; 
-}
-
+    //Método para que almacena los datos del administrador 
     @PostMapping("/altaModificacionAdministrador")
-    public String altaAdministrador(@ModelAttribute("administrador") Administrador administrador) {
+    public String altaModificacionAdministrador
+    // (@ModelAttribute Administrador administrador) {
+    (@ModelAttribute("administrador") Administrador administrador) {
         administradorService.save(administrador);
-        return "redirect:/administradores/listar";
+        return "redirect:/admin/listarAdministrador";
     }
+
+      //FUNCIONA
+      @GetMapping("/borrar/{id}")
+      public String borrarAdministrador(@PathVariable(name = "id") int id) {
+  
+          administradorService.delete(administradorService.findById(id));
+          return "redirect:/admin/listarAdministrador";
+      }
 
     // ME DA FALLO PORQUE FALTA METODO deleteByAdministrador
     // /**

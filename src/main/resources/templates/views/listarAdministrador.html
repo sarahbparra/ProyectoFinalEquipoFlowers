@@ -14,31 +14,29 @@
       <th>Correo Electrónico</th>
       <th>Teléfono</th>
     </tr>
+    <!-- iterar sobre la lista de administradores y mostrar cada uno en una fila de la tabla -->
+    <tr th:each=" administrador : ${administradores}">
+      <td th:text="${administrador.id}"></td>
+      <td th:text="${administrador.nombre}"></td>
+      <td th:text="${administrador.correo}"></td>
+      <td th:text="${administrador.telefono}"></td>
+      
 
-    <tbody>
+      <td>
+        <a th:href="@{/admin/altaModificacionAdministrador/}+${administrador.id}">Modificar datos</a>
+        <a th:href="@{/admin/borrar/}+${administrador.id}">Eliminar usuario</a>
+      </td>
 
-      <tr th:each=" administrador : ${administradores}">
-        <td th:text="${administrador.id}"></td>
-        <td th:text="${administrador.nombre}"></td>
-        <td th:text="${administrador.correo}"></td>
-        <td th:text="${administrador.telefono}"></td>
-
-
-        <td>
-          <a th:href="@{/administradores/frmActualizaradministrador/}+${administrador.id}">Modificar datos</a>
-          <a th:href="@{/administradores/borrar/}+${administrador.id}">Eliminar usuario</a>
-        </td>
-
-      </tr>
+    </tr>
 
     </tbody>
 
   </table>
 
   <div>
-    <a th:href="@{/administradores/frmAltaAdiministrador}"> Dar de alta </a>
+    <a th:href="@{/admin/frmAltaAdministrador}"> Dar de alta a un administrador </a>
   </div>
- 
+
 </body>
 
 </html>
