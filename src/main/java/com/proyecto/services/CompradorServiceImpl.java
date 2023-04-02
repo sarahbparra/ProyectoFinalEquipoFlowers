@@ -9,6 +9,8 @@ import com.proyecto.dao.CompradorDao;
 import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Proveedor;
 
+import jakarta.transaction.Transactional;
+
 //Para buscar los beans de los datos 
 @Service
 
@@ -30,12 +32,14 @@ public class CompradorServiceImpl implements CompradorService{
     }
 
     @Override
+    @Transactional
     public void save(Comprador comprador) {
         
         compradorDao.save(comprador); 
     }
 
     @Override
+    @Transactional
     public void delete(Comprador comprador) {
         
         compradorDao.delete(comprador);
@@ -48,6 +52,7 @@ public class CompradorServiceImpl implements CompradorService{
     // }
 
     @Override
+    @Transactional
     public void deleteById(int idComprador) {
         
         compradorDao.deleteById(idComprador);
