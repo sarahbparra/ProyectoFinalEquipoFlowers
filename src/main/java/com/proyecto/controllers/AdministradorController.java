@@ -1,7 +1,10 @@
 package com.proyecto.controllers;
 
+
+import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proyecto.entities.Administrador;
@@ -18,7 +22,7 @@ import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
 
 @Controller
-@RequestMapping("/administradores")
+@RequestMapping("/admin")
 
 public class AdministradorController {
     /**
@@ -72,7 +76,7 @@ public class AdministradorController {
         model.addAttribute("administrador", administrador);
         model.addAttribute("administradors", administradores);
 
-        return "formularioAltaAdministrador";
+        return "views/formularioAltaAdministrador";
     }
 
     @PostMapping("/guardar")

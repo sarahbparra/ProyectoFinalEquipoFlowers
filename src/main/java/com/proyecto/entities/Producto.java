@@ -42,9 +42,6 @@ public class Producto implements Serializable {
     List<Pedido> pedidos;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-    private Presentacion presentacion;
-
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Administrador administrador;
-    
+
 }

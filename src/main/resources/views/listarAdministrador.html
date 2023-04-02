@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Listado de Administradores</title>
+  </head>
+  <body>
+    <h1>Listado de Administradores</h1>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Nombre</th>
+        <th>Correo Electrónico</th>
+        <th>Teléfono</th>
+      </tr>
+      <!-- iterar sobre la lista de administradores y mostrar cada uno en una fila de la tabla -->
+      <c:forEach var="administrador" items="${administradores}">
+        <tr>
+          <td>${administrador.id}</td>
+          <td>${administrador.nombre}</td>
+          <td>${administrador.correo}</td>
+          <td>${administrador.telefono}</td>
+        </tr>
+      </c:forEach>
+    </table>
+  </body>
+</html>
