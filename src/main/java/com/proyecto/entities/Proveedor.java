@@ -34,8 +34,6 @@ public class Proveedor implements Serializable{
 
     private String nombre; 
     private String apellidos; 
-    // private String segundoApellido; 
-
     private String telefono; 
     private String correo; 
 
@@ -49,14 +47,5 @@ public class Proveedor implements Serializable{
     private List<Producto> productos; //Un proveedor puede "vender" muchos productos
 
 
-
-
-    //Los campos de Vendedor van a ser nombre, apellidos,dirección del local, telefono y correo
-    // private int id;
-    // private String nombre;
-    // private String apellidos;
-    // private String telefonoEmpresa;
-    // private String correo;
-    // private String direccionLocal;
 
 }
