@@ -35,7 +35,8 @@
                     <input type="checkbox" name="productos" 
                         th:text="${producto.codigoProducto}" 
                         th:value="${producto.id}" 
-                        th:field="*{productos}" />
+                        th:field="*{productos}" 
+                        th:checked="${producto.pedido != null and pedido.id == producto.pedido.id}"/>
                     </p>
                 </div >
 

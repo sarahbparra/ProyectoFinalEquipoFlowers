@@ -86,65 +86,45 @@ public class PedidoController {
         return "redirect:/pedido/listar";
     }
 
-    // // Método que borra empleados
-    // @GetMapping("/borrar/{id}")
-    // public String borrarEmpleado(@PathVariable(name = "id") int idEmpleado) {
-    //     empleadoService.deleteById(idEmpleado);
-    //     return "redirect:/listar";
-    // }
+    // // Método que borra pedidos
+    @GetMapping("/borrar/{id}")
+    public String borrarPedido(@PathVariable(name = "id") int idPedido) {
+        pedidoService.deleteById(idPedido);
+        return "redirect:/listar";
+    }
 
-    // // Metodo que te da los detalles del empleado
-    // @GetMapping("/detalles/{id}")
-    // public String empleadoDetails(@PathVariable(name = "id") int id, Model model) {
-    //     Empleado empleado = empleadoService.findById(id);
+    //Metodo que te da los detalles del pedido
+        @GetMapping("/detalles/{id}")
+        public String pedidoDetails(@PathVariable(name = "id") int id, Model model) {
+        Pedido pedido = pedidoService.findById(id);
 
-    //     List<Telefono> telefonos = telefonoService.findByEmpleado(empleado);
-    //     List<String> numerosTelefono = telefonos.stream()
-    //             .map(t -> t.getNumero())
-    //             .toList();
-    //     model.addAttribute("telefonos", numerosTelefono);
-    //     model.addAttribute("empleado", empleado);
+        List<Producto> productos = productoService.findByPedido(pedido);
+        List<String> codProductos = productos.stream()
+                .map(p -> p.getCodigoProducto())
+                .toList();
+        model.addAttribute("codProductos", codProductos);
+        model.addAttribute("pedido", pedido);
 
-    //     List<Correo> correos = correoService.findByEmpleado(empleado);
-    //     List<String> correosCorreos = correos.stream()
-    //             .map(c -> c.getEmail())
-    //             .toList();
-    //     model.addAttribute("correos", correosCorreos);
-    //     model.addAttribute("empleado", empleado);
-    //     return "views/detalles";
-    // }
+        return "views/detallePedido";
+    }
 
     // // // Actualizar
-    // @GetMapping("/frmActualizar/{id}")
-    // public String frmActualizaEmpleado(@PathVariable(name = "id") int idEmpleado,
-    //         Model model) {
+    @GetMapping("/frmActualizar/{id}")
+    public String frmActualizarPedido(@PathVariable(name = "id") int idPedido,
+            Model model) {
 
-    //     Empleado empleado = empleadoService.findById(idEmpleado);
+        Pedido pedido = pedidoService.findById(idPedido);
 
-    //     List<Telefono> TodosTelefonos = telefonoService.findAll();
-    //     List<Telefono> telefonosDelEmpleado = TodosTelefonos.stream()
-    //             .filter(telefono -> telefono.getEmpleado().getId() == idEmpleado)
-    //             .collect(Collectors.toList());
+        List<Comprador> compradores = compradorService.findAll();
+        List<Producto> allProductos = productoService.findAll();
+        //List<Producto> productosSel = productoService.findByPedido(pedido);
 
-    //     String numerosDeTelefono = telefonosDelEmpleado.stream()
-    //             .map(telefono -> telefono.getNumero())
-    //             .collect(Collectors.joining(";"));
+        model.addAttribute("pedido", pedido);
+        model.addAttribute("compradores", compradores);
+        model.addAttribute("productos", allProductos);
+        //model.addAttribute("productosSel", productosSel);
 
-    //     List<Correo> TodosCorreo = correoService.findAll();
-    //     List<Correo> correosDelEmpleado = TodosCorreo.stream()
-    //             .filter(correo -> correo.getEmpleado().getId() == idEmpleado)
-    //             .collect(Collectors.toList());
 
-    //     String correoEmpleado = correosDelEmpleado.stream()
-    //             .map(correo -> correo.getEmail())
-    //             .collect(Collectors.joining(";"));
-
-    //     List<Departamento> departamentos = departamentoService.findAll();
-
-    //     model.addAttribute("empleado", empleado);
-    //     model.addAttribute("telefonos", numerosDeTelefono);
-    //     model.addAttribute("departamento", departamentos);
-    //     model.addAttribute("correos", correoEmpleado);
-    //     return "views/formularioAltaEmpleado";
-    // }
+        return "views/formularioAltaPedido";
+    }
 }
