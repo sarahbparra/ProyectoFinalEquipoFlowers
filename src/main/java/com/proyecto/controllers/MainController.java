@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proyecto.entities.Administrador;
+import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 import com.proyecto.services.AdministradorService;
+import com.proyecto.services.CompradorService;
 import com.proyecto.services.ProductoService;
 import com.proyecto.services.ProveedorService;
 
@@ -36,6 +38,8 @@ public class MainController {
     @Autowired
     private ProductoService productoService;
 
+    @Autowired
+    private CompradorService compradorService;
     
 
     //El siguiente metodo devuelve un listado de Proveedores
@@ -45,7 +49,7 @@ public class MainController {
        
         List<Proveedor> proveedores = proveedorService.findAll();
         
-        ModelAndView mav = new ModelAndView("views/listarProveedores");
+        ModelAndView mav = new ModelAndView("views/listarProveedor");
         
         mav.addObject("proveedores",proveedores);
 
@@ -56,7 +60,7 @@ public class MainController {
     // Metodo para mostrar el formulario de alta de un proveedor,es decir, Crear un proveedor 
      
 
-     @GetMapping("/formulariorAltaProveedor") // aqui es el nombre de la url que va a resoponder y le damos el nombre que queramos
+     @GetMapping("/frmAltaProveedor") // aqui es el nombre de la url que va a resoponder y le damos el nombre que queramos
      public String formularioAltaProveedor(Model model){
 
      List<Administrador> administradores = administradorService.findAll();
@@ -79,9 +83,9 @@ public class MainController {
          */
 
          @PostMapping("/altaModificacionProveedor") 
-        public String altaEmpleado(@ModelAttribute Proveedor proveedor,
-                      @RequestParam(name ="productos") String productosDelProveedor){
-
+        public String altaProveedor(@ModelAttribute Proveedor proveedor,
+                      @RequestParam(name ="productos") String productosDelProveedor,
+                      @RequestParam(name ="compradores") String compradoresDelProveedor){
 
             LOG.info("Productos Del Proveedor: " + productosDelProveedor);
  
@@ -104,7 +108,31 @@ public class MainController {
                      productoService.save(productoObject);
                 });
                 
-             }
+            // LOG.info("Compradores Del Proveedor: " + compradoresDelProveedor);
+
+            // proveedorService.save(proveedor);
+
+            // List<String> listadoCompradores = null;
+            // if (compradoresDelProveedor != null) {
+            //     String[] arrayCompradores = compradoresDelProveedor.split(";");
+
+            //     listadoCompradores = Arrays.asList(arrayCompradores);
+            // }
+
+            // if (listadoCompradores != null) {
+            //   compradorService.deleteByProveedor(proveedor);
+            //   listadoCompradores.stream().forEach(c -> {
+            //     Comprador compradorObject = Comprador.builder()
+            //                 .nombre(c)
+            //                 .proveedor(proveedor)
+            //                 .build();
+
+            //       compradorService.save(compradorObject);
+
+            //     });
+
+            }
+             
             
              
             return "redirect:/listarProveedor"; 
@@ -124,7 +152,7 @@ public class MainController {
         List<Producto> todosProductos = productoService.findAll(); // findAll devuelve una lista de todos los productos de mi Proveedor
         
     
-        List<Producto> produtcosDelProveedor = todosProductos.stream().filter(t->t.getProveedor().getId() == idProveedor)
+        List<Producto> produtcosDelProveedor = todosProductos.stream().filter(p->p.getProveedor().getId() == idProveedor)
         .collect(Collectors.toList()); 
     
         String prdctos = produtcosDelProveedor.stream().map(t->t.getCodigoProducto()).collect(Collectors.joining(";"));
@@ -133,6 +161,24 @@ public class MainController {
         model.addAttribute("productos", prdctos);
 
     
+        //Compradores
+
+        List<Comprador> todosCompradores = compradorService.findAll();
+        
+
+        List<Comprador> compradoresDelProveedor = todosCompradores
+       .stream()
+       .filter(c -> c.getProveedor().getId() == idProveedor)
+       .collect(Collectors.toList());
+
+
+
+        String cpradores = compradoresDelProveedor.stream().map(c -> c.getNombre())
+               .collect(Collectors.joining(";"));
+
+        model.addAttribute("compradores", cpradores);
+
+
         List<Administrador> administradores =administradorService.findAll();
         
         model.addAttribute("administradores", administradores);
@@ -153,7 +199,29 @@ public class MainController {
        }
 
       
-    
+           
+    // Metodo que nos de los detalles de un proveedor
+    @GetMapping("/detalles/{id}")
+    public String detallesProveedorString(@PathVariable(name = "id") int id, Model model) {
+
+        Proveedor proveedor = proveedorService.findById(id);
+
+        List<Producto> productos = productoService.findByProveedor(proveedor);
+        List<String> numerosProducto = productos.stream().map(t -> t.getCodigoProducto()).toList();
+
+        // List<Comprador> compradores = compradorService.findByProveedor(proveedor);
+        // List<String> nComprador = compradores.stream().map(c -> c.getNombre()).toList();
+
+        model.addAttribute("productos", numerosProducto);
+        //model.addAttribute("compardores", nComprador);
+        model.addAttribute("proveedor", proveedor);
+
+       
+        return "views/detallesProveedor"; // esto hace referencia a la views llamada  detalleEmpleado
+        //creada en templates
+    }
 }
+    
+
 
 

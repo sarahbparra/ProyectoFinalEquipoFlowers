@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1>Formulario de alta/modificación de empleado</h1>
+    <form th:object="${proveedor}" th:action="@{/altaModificacionProveedor}" method="post">
+
+        
+        <input type="hidden" name="id" th:value="${proveedor.id} ">
+        
+
+
+        <!-- Resto de campos: -->
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre" th:field="*{nombre}" required>
+        
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" name="apellidos" id="apellidos" th:field="*{apellidos}" required>
+
+        
+        <label for="correo">Correo:</label>
+        <input type="email" name="correo" id="correo" th:field="*{correo}">
+
+        <label for="telefono">Telefono:</label>
+        <input type="text" name="telefono" id="telefono" th:field="*{telefono}">
+       
+        <label for="idAdministrador">administrador:</label>
+        <select name="administrador" id="idAdministrador" required>
+            <option></option>
+            
+            <option th:each="administrador : ${administradores}" 
+            th:value="${administrador.id}" th:text="${administrador.nombre}"
+                th:selected="${proveedor.administrador != null and administrador.id == proveedor.administrador.id}"></option>
+                   </select>
+
+        <label for="numerosProducto">Producto(s)</label>
+        <input type="text" name="numerosProducto" id="numerosProducto"
+            placeholder="Uno o varios, separados por punto y coma" 
+            th:value="${productos}">
+       
+
+
+     
+
+        <!-- Para enviar el formulario: -->
+        <input type="submit" value="Enviar">
+    </form>
+
+</body>
+</html>

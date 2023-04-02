@@ -33,8 +33,8 @@ public class Proveedor implements Serializable{
     private int id; 
 
     private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
+    private String apellidos; 
+    // private String segundoApellido; 
 
     private String telefono; 
     private String correo; 

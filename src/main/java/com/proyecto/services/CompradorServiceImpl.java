@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.proyecto.dao.CompradorDao;
 import com.proyecto.entities.Comprador;
+import com.proyecto.entities.Proveedor;
 
 //Para buscar los beans de los datos 
 @Service
@@ -40,12 +41,30 @@ public class CompradorServiceImpl implements CompradorService{
         compradorDao.delete(comprador);
     }
 
+    // @Override
+    // @Transactional
+    // public void deleteByProveedor(Proveedor proveedor) {
+    //     compradorDao.deleteByProveedor(proveedor);
+    // }
+
     @Override
     public void deleteById(int idComprador) {
         
         compradorDao.deleteById(idComprador);
     }
 
+   
+
+    
+    
+    // @Override
+    // public List<Comprador> findByProveedor(Proveedor proveedor) {
+    //     return compradorDao.findByProveedor(proveedor);
+    // }
+
+   
+    
+    
     // @Override
     // public Comprador findByIdPedido(int idPedido) {
         

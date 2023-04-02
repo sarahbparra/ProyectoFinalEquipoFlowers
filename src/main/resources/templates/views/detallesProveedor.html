@@ -1,0 +1,40 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  
+
+    <h1 th:if="${proveedor != null}"
+        th:text="'Detalles del proveedor ' + ${proveedor.nombre} + ' ' + ${proveedor.apellidos}"></h1>
+
+    <div th:if="${productos != null}">
+
+        <p>Productos:</p>
+
+        <ul>
+
+            <li th:each="producto : ${productos}" th:text="${producto}"></li>
+
+        </ul>
+
+    </div>
+
+    <div th:if="${compradores != null}">
+
+        <p>Compradores:</p>
+
+        <ul>
+
+            <li th:each="comprador : ${compradores}" th:text="${comprador}"></li>
+
+        </ul>
+
+    </div>
+    
+</body>
+
+</html>
