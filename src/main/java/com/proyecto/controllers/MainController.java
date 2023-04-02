@@ -20,6 +20,7 @@ import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 import com.proyecto.services.AdministradorService;
+//import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
 import com.proyecto.services.ProductoService;
 import com.proyecto.services.ProveedorService;
