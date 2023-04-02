@@ -1,26 +1,44 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Listado de Administradores</title>
-  </head>
-  <body>
-    <h1>Listado de Administradores</h1>
-    <table>
-      <tr>
-        <th>ID</th>
-        <th>Nombre</th>
-        <th>Correo Electrónico</th>
-        <th>Teléfono</th>
+
+<head>
+  <title>Listado de Administradores</title>
+</head>
+
+<body>
+  <h1>Listado de Administradores</h1>
+  <table>
+    <tr>
+      <th>ID</th>
+      <th>Nombre</th>
+      <th>Correo Electrónico</th>
+      <th>Teléfono</th>
+    </tr>
+
+    <tbody>
+
+      <tr th:each=" administrador : ${administradores}">
+        <td th:text="${administrador.id}"></td>
+        <td th:text="${administrador.nombre}"></td>
+        <td th:text="${administrador.correo}"></td>
+        <td th:text="${administrador.telefono}"></td>
+
+
+        <td>
+          <a th:href="@{/administradores/frmActualizaradministrador/}+${administrador.id}">Modificar datos</a>
+          <a th:href="@{/administradores/borrar/}+${administrador.id}">Eliminar usuario</a>
+        </td>
+
       </tr>
-      <!-- iterar sobre la lista de administradores y mostrar cada uno en una fila de la tabla -->
-      <c:forEach var="administrador" items="${administradores}">
-        <tr>
-          <td>${administrador.id}</td>
-          <td>${administrador.nombre}</td>
-          <td>${administrador.correo}</td>
-          <td>${administrador.telefono}</td>
-        </tr>
-      </c:forEach>
-    </table>
-  </body>
+
+    </tbody>
+
+  </table>
+
+  <div>
+    <a th:href="@{/administradores/frmAltaAdiministrador}"> Dar de alta </a>
+  </div>
+ 
+</body>
+
 </html>
