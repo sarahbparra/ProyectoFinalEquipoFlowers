@@ -11,7 +11,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -73,8 +72,8 @@ public class Producto implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Proveedor proveedor;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "producto")
-    List<Pedido> pedidos;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
+    private Pedido pedido; 
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Presentacion presentacion;
