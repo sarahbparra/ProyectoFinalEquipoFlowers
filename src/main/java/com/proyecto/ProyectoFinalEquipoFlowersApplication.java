@@ -7,6 +7,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.proyecto.entities.Administrador;
 import com.proyecto.services.AdministradorService;
+import com.proyecto.services.CompradorService;
+import com.proyecto.services.ProductoService;
 
 @SpringBootApplication
 public class ProyectoFinalEquipoFlowersApplication implements CommandLineRunner {
@@ -14,6 +16,12 @@ public class ProyectoFinalEquipoFlowersApplication implements CommandLineRunner 
 	@Autowired
 	private AdministradorService administradorService;
 
+	@Autowired
+	private ProductoService productoService;
+
+	@Autowired
+	private CompradorService compradorService;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoFinalEquipoFlowersApplication.class, args);
 	}
