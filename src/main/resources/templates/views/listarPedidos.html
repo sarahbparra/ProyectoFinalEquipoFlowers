@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listado de Pedidos </h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Código</th>
+                <th>Fecha del pedido</th>
+                <th>Fecha de salida</th>
+                <th>Comprador</th>
+<!-- En la parte de detalle pondré el lista de productos -->
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr th:each=" pedido : ${pedidos}">
+                <td th:text="${pedido.id}"></td>
+                <td th:text="${pedido.codigoPedido}"></td>
+                <td th:text="${pedido.fechaPedido}"></td>
+                <td th:text="${pedido.fechaSalida}"></td>
+                <td th:text="${pedido.comprador}"></td>
+    
+                <td>
+                    <a th:href="@{/pedido/frmActualizarPedido/}+${pedido.id}">Modificar datos</a>
+                    <a th:href="@{/pedido/borrar/}+${pedido.id}">Borrar pedido</a>
+                </td>
+
+            </tr>
+
+        </tbody>
+
+     </table>   
+
+     <div>
+        <a th:href="@{/pedido/frmAltaPedido}"> Datos para dar de Alta un pedido </a>
+     </div>
+</body>
+</html>

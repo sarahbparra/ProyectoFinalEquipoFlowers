@@ -2,7 +2,6 @@ package com.proyecto.services;
 
 import java.util.List;
 
-import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Pedido;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
@@ -16,5 +15,5 @@ public interface ProductoService {
     public void deleteByProveedor(Proveedor proveedor);
     public List<Producto> findByProveedor(Proveedor proveedor);
     // public List<Producto> findByComprador(Comprador comprador);
-    // public List<Producto> findByPedido (Pedido pedido);
+    public List<Producto> findByPedido (Pedido pedido);
 }

@@ -1,5 +1,6 @@
 package com.proyecto.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,7 +8,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.dao.ProductoDao;
-import com.proyecto.entities.Comprador;
 import com.proyecto.entities.Pedido;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
@@ -20,7 +20,12 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public List<Producto> findAll() {
-        return productoDao.findAll();
+        List<Producto> productos = new ArrayList<>();
+        for(int i=0; i<5; i++){
+            productos.add(new Producto(i, "codigo-prod-" + i, null, null, null));
+        }
+        return productos;
+        //return productoDao.findAll();
     }
 
     @Override
@@ -51,10 +56,10 @@ public class ProductoServiceImpl implements ProductoService{
         return productoDao.findByProveedor(proveedor);
     }
 
-    // @Override
-    // public List<Producto> findByPedido(Pedido pedido) {
-    //    return productoDao.findByPedido(pedido);
-    // }
+    @Override
+    public List<Producto> findByPedido(Pedido pedido) {
+       return productoDao.findByPedido(pedido);
+    }
 
     // @Override
     // public List<Producto> findByComprador(Comprador comprador) {

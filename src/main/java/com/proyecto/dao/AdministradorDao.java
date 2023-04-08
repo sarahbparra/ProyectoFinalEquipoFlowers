@@ -19,10 +19,7 @@ public interface AdministradorDao extends JpaRepository<Administrador, Integer> 
     
 }
 /**
- * La anotación @Repository indica que esta interfaz es un componente de la capa
- * de acceso a datos y permite que Spring gestione la creación de instancias de
- * esta clase.
- * 
+ 
  * La interfaz extiende la interfaz JpaRepository, que proporciona métodos
  * básicos para acceder a la base de datos relacionales utilizando JPA (Java
  * Persistence API). La entidad administrador es la entidad gestionada por esta
@@ -32,5 +29,5 @@ public interface AdministradorDao extends JpaRepository<Administrador, Integer> 
  * No se proporciona ninguna implementación explícita para los métodos CRUD, ya
  * que Spring Data JPA se encarga de crear la implementación en tiempo de
  * ejecución en función de los nombres de los métodos definidos en esta
- * interfaz.
+ * interfaz. 
  */
