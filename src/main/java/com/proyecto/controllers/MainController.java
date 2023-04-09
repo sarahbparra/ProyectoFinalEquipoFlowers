@@ -19,6 +19,7 @@ import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 import com.proyecto.services.CompradorService;
 import com.proyecto.services.ProductoService;
+import com.proyecto.services.ProveedorService;
 
 @Controller
 @RequestMapping("/")
@@ -29,6 +30,9 @@ public class MainController {
 
     @Autowired
     private ProductoService productoService;
+
+    @Autowired
+    private ProveedorService proveedorService;
 
 
 /**Método que lista productos */
@@ -46,36 +50,36 @@ public ModelAndView listarProducto() {
 
 // /**Método de alta productos */
 
-// @GetMapping("/AltaProducto")
-// public String AltaProducto(Model model) {
+@GetMapping("/AltaProducto")
+public String AltaProducto(Model model) {
 
-//     List<Proveedor> proveedores = proveedorService.findAll();
+    List<Proveedor> proveedores = proveedorService.findAll();
     
-//     Producto producto = new Producto();
+    Producto producto = new Producto();
 
-//     model.addAttribute("producto", producto);
-//     model.addAttribute("proveedores", proveedores);
+    model.addAttribute("producto", producto);
+    model.addAttribute("proveedores", proveedores);
 
-//     return "views/formularioAltaProducto";
+    return "views/formularioAltaProducto";
     
-// }
+}
 
 //Método que  muestra el formulario que actualiza un procucto:
 
-// @GetMapping("/frmActualizar/{id}")
-// public String frmActualizarProducto(@PathVariable(name = "id") int idProducto, 
-// Model model) {
+@GetMapping("/frmActualizar/{id}")
+public String frmActualizarProducto(@PathVariable(name = "id") int idProducto, 
+Model model) {
 
-//    Producto producto = productoService.findbyId(idProducto)
+   Producto producto = productoService.findById(idProducto);
 
 
-//     List<Proveedor> proveedores = proveedorService.findAll();
+    List<Proveedor> proveedores = proveedorService.findAll();
 
-//     model.addAttribute("producto", producto);
+    model.addAttribute("producto", producto);
     
 
-//     return "views/formularioAltaProducto";
-// }
+    return "views/formularioAltaProducto";
+}
 
 
 //Método que borra productos
