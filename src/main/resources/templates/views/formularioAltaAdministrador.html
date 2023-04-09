@@ -6,13 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+
+            background-color: #a28560;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            font-size: 1em;
+
+        }
+
+        h1 {
+            font-size: 3em;
+            text-align: center;
+            margin-bottom: 0.5em;
+        }
+
+        p {
+            font-size: 1em;
+            text-align: center;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+        table {
+            width: 80%;
+            margin: 2em auto;
+            border-collapse: separate;
+            border-spacing: 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+
+
+        th,
+        td {
+            padding: 0.5em;
+            text-align: center;
+            border: 1px solid #d9ac72;
+        }
+
+        th {
+            background-color: #d2b48c;
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
     <h1>Formulario de alta/modificación de administrador</h1>
-    <form th:object="${administrador}" 
-    th:action="@{/admin/altaModificacionAdministrador}" 
-    method="post"
+    <form th:object="${administrador}" th:action="@{/admin/altaModificacionAdministrador}" method="post"
         enctype="multipart/form-data">
         <!-- h:action es un atributo de Thymeleaf que se utiliza para establecer la acción que se realizará cuando se envíe el formulario. En este caso, se establece la acción a la URL "/altaModificacionAdministrador", lo que significa que cuando se envíe el formulario, los datos se enviarán a esa URL para su procesamiento en el servidor. El atributo th:action se usa para generar la URL de acción en el HTML resultante de la plantilla Thymeleaf. El atributo "method" se utiliza para especificar el método HTTP que se utilizará para enviar los datos del formulario, que en este caso es "post". -->
 
@@ -43,7 +92,12 @@
 
         <!-- Para enviar el formulario: -->
         <input type="submit" value="ALTA">
+
+
     </form>
+    <footer>
+        <p>Derechos reservados &copy; 2023 Tienda Online</p>
+    </footer>
 
 </body>
 

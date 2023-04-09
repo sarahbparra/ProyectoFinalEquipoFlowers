@@ -7,27 +7,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FLOWERS - Tienda Online</title>
   <style>
-    body {
+    header {
+      background-color: #5b4427;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 35vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    main {
       background-color: #d2b48c;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      height: 130vh;
+      margin-top: 10;
       font-family: Arial, sans-serif;
+      justify-content: center;
+      vertical-align: center;
     }
 
+
     h1 {
-      font-size: 5em;
+      font-size: 4em;
       text-align: center;
       margin-bottom: 0.5em;
+      color: black;
+
+
     }
 
     h2 {
-      font-size: 2em;
+      font-size: 0.5em;
       text-align: center;
       margin-top: 0;
+      color: #8b5a2b;
+    }
+
+    h3 {
+      font-size: 1-em;
+      text-align: center;
+      /* margin-top: 0.1em; */
+      /* margin-bottom: 1em; */
       color: #8b5a2b;
     }
 
@@ -43,34 +68,40 @@
       justify-content: center;
       margin-top: 1em;
       gap: 1em;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      vertical-align: center;
     }
 
     button {
-      font-size: 2em;
+      font-size: 1em;
       padding: 0.5em 1em;
       margin: 0 1em;
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      justify-content: center;
     }
 
     .button-conoce {
       background-color: #ca8f54;
       color: white;
-      margin-right: 10px;
+
       margin-bottom: 1em;
+
     }
 
     .button-consulta {
       background-color: #9b6a38;
       color: white;
-     
+
     }
 
     .button-por-proveedor {
       background-color: #91754d;
       color: white;
-      
+
     }
 
     .button-por-producto {
@@ -81,18 +112,64 @@
 </head>
 
 <body>
-  <h1>TIENDA</h1>
-  <h2 style="font-size: 1em;">Bring to you by FLOWERS</h2>
+  <header>
+    <h1>TIENDA</h1>
+    <h2 style="font-size: 1em;">Bring to you by FLOWERS</h2>
 
-  <a href="/admin/listar"><button class="button-conoce">Conoce a nuestro Equipo</button></a>
-  <a href="/compradores/listar"><button class="button-consulta">Consultar mis datos</button></a>
+    <nav>
+      <ul>
+        <div class="button-container"></div>
+        <a href="/admin/listar"><button class="button-conoce">Conócenos</button></a>
+        <a href="/compradores/listar"><button class="button-consulta">Consultar mis datos</button></a>
+        <a href="/proveedores/listar"><button class="button-por-proveedor">Comprar por proveedor</button></a>
+        <a href="/productos/listar"><button class="button-por-producto">Comprar por producto</button></a>
+       
+      </div>
+      </ul>
+    </nav>
+  </header>
 
+  <main>
+    <section>
+      <h3>Bienvenidos a nuestra tienda online</h3>
+    </section>
 
-  <p>Comprar</p>
-  <div class="button-container">
-    <a href="/proveedores/listar"><button class="button-por-proveedor">Por proveedor</button></a>
-    <a href="/productos/listar"><button class="button-por-producto">Por producto</button></a>
-  </div>
+    <section>
+      <p>Aquí puedes encontrar una amplia selección de productos de alta calidad.</p>
+    </section>
+    <section>
+      <h2>Últimos productos</h2>
+      <ul>
+        <li>
+          <a href="#">
+            <img src="ruta-a-imagen.jpg" alt="Nombre del producto">
+            <h3>Nombre del producto</h3>
+            <p>Descripción breve del producto.</p>
+            <span>Precio: $XX.XX</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="ruta-a-imagen.jpg" alt="Nombre del producto">
+            <h3>Nombre del producto</h3>
+            <p>Descripción breve del producto.</p>
+            <span>Precio: $XX.XX</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="ruta-a-imagen.jpg" alt="Nombre del producto">
+            <h3>Nombre del producto</h3>
+            <p>Descripción breve del producto.</p>
+            <span>Precio: $XX.XX</span>
+          </a>
+        </li>
+      </ul>
+    </section>
+  </main>
+  <footer>
+    <p>Derechos reservados &copy; 2023 Tienda Online</p>
+  </footer>
 </body>
 
 </html>
