@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bienvenido</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2em;
+      background-color: #D2B48C;
+      color: white;
+      height: 100vh;
+      margin: 0;
+    }
+    
+    h1 {
+      margin-bottom: 0.5em;
+    }
+
+    .welcome {
+      font-size: 2em;
+      display: flex;
+      align-items: center;
+    }
+
+    .flower-icon {
+      margin-right: 0.5em;
+      color: white;
+    }
+    
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1em;
+    }
+    
+    button {
+      font-size: 1.5em;
+      padding: 0.5em 1em;
+      margin: 0 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #D2B48C;
+      color: white;
+    }
+    
+    .button-si {
+      background-color: #A37E4F;
+    }
+    
+    .button-no {
+      background-color: #8C6F42;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 0;
+      background-color: #D2B48C;
+      padding: 1em;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+  <script>
+    function redirigir() {
+      var respuesta = document.querySelector('input[name="edad"]:checked').value;
+      if (respuesta === "si") {
+        window.location.href = "views/home.html";
+      } else if (respuesta === "no") {
+        mostrarAdvertencia();
+      }
+    }
+    
+    function mostrarAdvertencia() {
+      var mensaje = "Te recordamos que para hacer cualquier pedido en nuestra tienda necesitarás ser mayor de edad";
+      alert(mensaje);
+    }
+  </script>
+</head>
+<body>
+  <h1 class="welcome"><i class="fas fa-flower flower-icon"></i>¡Bienvenido! <br>Estás a punto de acceder a la tienda online del Equipo FLOWERS</h1>
+  <p><br>Antes de nada, una pequeña comprobación: ¿Eres mayor de edad?</p>
+  <form action="/home" method="get">
+    <div class="button-container">
+      <button class="button-si" type="submit">Sí</button>
+      <button class="button-no" type="button" onclick="mostrarAdvertencia()">No</button>
+    </div>
+  </form>
+  <footer>Bring to you by Equipo FLOWERS</footer>
+
+  <!-- Biblioteca de iconos Font Awesome -->
+  <!-- <script src="https://kit.fontawesome.com/xxxxxxxxxx.js -->

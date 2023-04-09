@@ -8,7 +8,143 @@
 </head>
 <body>
     <h1>Listado de Compradores </h1>
-
+    <style>
+        body {
+          background-color: #d2b48c;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          height: 100vh;
+          margin: 0;
+          font-family: Arial, sans-serif;
+          font-size: 1em;
+        }
+    
+        h1 {
+          font-size: 3em;
+          text-align: center;
+          margin-bottom: 0.5em;
+        }
+    
+        h2 {
+          font-size: 2em;
+          text-align: center;
+          margin-top: 0;
+          color: #8b5a2b;
+        }
+    
+        p {
+          font-size: 1em;
+          text-align: center;
+          margin-top: 2em;
+          margin-bottom: 1em;
+        }
+    
+        table {
+          width: 80%;
+          margin: 2em auto;
+          border-collapse: separate;
+          border-spacing: 0;
+          border-radius: 10px;
+          text-align: center;
+        }
+    
+    
+    
+        th,
+        td {
+          padding: 0.5em;
+          text-align: center;
+          border: 1px solid #d9ac72;
+        }
+    
+        th {
+          background-color: #d2b48c;
+          color: white;
+        }
+    
+        tr:nth-child(even) {
+          background-color: #f9d9b9;
+        }
+    
+        tr:nth-child(odd) {
+          background-color: #f1c1a6;
+        }
+    
+        tr:hover {
+          background-color: #d2b48c;
+          color: #2c1f12;
+          cursor: pointer;
+          transition: all 0.2s ease-in-out;
+          /* animación suave */
+        }
+    
+    
+    
+    
+    
+    
+        .table-striped tbody tr:nth-of-type(odd) {
+          background-color: #c4915d;
+          color: solid black;
+        }
+    
+        .table-striped tbody tr:hover {
+          background-color: #ba782c;
+        }
+    
+        .button-container {
+          display: flex;
+          justify-content: center;
+          margin-top: 1em;
+          gap: 1em;
+        }
+    
+        button {
+          font-size: 1em;
+          padding: 0.5em 1em;
+          margin: 0 1em;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+    
+        .button-modificar {
+          background-color: #d2691e;
+          color: white;
+        }
+    
+        .button-eliminar {
+          background-color: #a0522d;
+          color: white;
+        }
+    
+        .button-alta {
+          background-color: #8b4513;
+          color: white;
+          font-weight: bold;
+          border: 2px solid white;
+          transition: all 0.2s ease-in-out;
+        }
+    
+        .button-alta:hover {
+          background-color: white;
+          color: #8b4513;
+        }
+    
+        .button-volver {
+          background-color: #f58f69;
+          color: white;
+        }
+    
+        .button-volver:hover {
+          background-color: white;
+          color: #8b4513;
+        }
+      
+    
+      </style>
     <table>
         <thead>
             <tr>
@@ -47,9 +183,15 @@
         </tbody>
 
      </table>   
+    
 
-     <div>
-        <a th:href="@{/compradores/frmAltaComprador}"> Datos para dar de Alta a un Comprador </a>
-     </div>
+     <div class="button-container">
+        <a th:href="@{/compradores/frmAltaComprador}"> <button class="button-alta">DAR DE ALTA</button>
+        </a>
+      
+        <a th:href="@{/home}">
+          <button class="button-volver">VOLVER</button>
+        </a>
+      </div>
 </body>
 </html>

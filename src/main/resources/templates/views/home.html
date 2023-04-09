@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FLOWERS - Tienda Online</title>
+  <style>
+    body {
+      background-color: #d2b48c;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 5em;
+      text-align: center;
+      margin-bottom: 0.5em;
+    }
+
+    h2 {
+      font-size: 2em;
+      text-align: center;
+      margin-top: 0;
+      color: #8b5a2b;
+    }
+
+    p {
+      font-size: 1.5em;
+      text-align: center;
+      margin-top: 2em;
+      margin-bottom: 1em;
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 1em;
+      gap: 1em;
+    }
+
+    button {
+      font-size: 2em;
+      padding: 0.5em 1em;
+      margin: 0 1em;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .button-conoce {
+      background-color: #ca8f54;
+      color: white;
+      margin-right: 10px;
+      margin-bottom: 1em;
+    }
+
+    .button-consulta {
+      background-color: #9b6a38;
+      color: white;
+     
+    }
+
+    .button-por-proveedor {
+      background-color: #91754d;
+      color: white;
+      
+    }
+
+    .button-por-producto {
+      background-color: #7c502f;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>TIENDA</h1>
+  <h2 style="font-size: 1em;">Bring to you by FLOWERS</h2>
+
+  <a href="/admin/listar"><button class="button-conoce">Conoce a nuestro Equipo</button></a>
+  <a href="/compradores/listar"><button class="button-consulta">Consultar mis datos</button></a>
+
+
+  <p>Comprar</p>
+  <div class="button-container">
+    <a href="/proveedores/listar"><button class="button-por-proveedor">Por proveedor</button></a>
+    <a href="/productos/listar"><button class="button-por-producto">Por producto</button></a>
+  </div>
+</body>
+
+</html>

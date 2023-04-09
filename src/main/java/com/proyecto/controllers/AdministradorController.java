@@ -35,10 +35,10 @@ public class AdministradorController {
 
     /**
      * Este metodo devuelve un listado de Administradores en la url
-     * //http://localhost:8080/admin/listarAdministrador
+     * //http://localhost:8080/admin/listar
      */
     // FUNCIONA
-    @GetMapping("/listarAdministrador")
+    @GetMapping("/listar")
     public ModelAndView listar() {
 
         List<Administrador> administradores = administradorService.findAll();
