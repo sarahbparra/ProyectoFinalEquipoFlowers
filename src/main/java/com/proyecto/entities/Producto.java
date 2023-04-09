@@ -58,7 +58,7 @@ public class Producto implements Serializable {
     private double peso;
     private Maduracion maduracion;
     public enum Maduracion {
-        SEMICURADO, CURADO, VIEJO, AÑEJO
+        SEMICURADO, CURADO, VIEJO, ANEJO
     }
     private ProcedenciaLeche procedenciaLeche;
     public enum ProcedenciaLeche{
