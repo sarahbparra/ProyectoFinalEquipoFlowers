@@ -14,9 +14,9 @@ public interface ProductoService {
     public Producto findById(int idProducto);
     public void save(Producto producto);
     public void deleteById(int idProducto);
-    public void deleteByProveedor(Proveedor proveedor);
+   // public void deleteByProveedor(Proveedor proveedor);
     public void delete(Producto producto);
-    public List<Producto> findByProveedor(Proveedor proveedor);
+   // public List<Producto> findByProveedor(Proveedor proveedor);
     // public List<Producto> findByComprador(Comprador comprador);
     
 }

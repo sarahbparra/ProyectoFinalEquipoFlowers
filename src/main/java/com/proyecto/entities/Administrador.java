@@ -44,8 +44,6 @@ public class Administrador implements Serializable{
     mappedBy = "administrador")
     private List<Comprador> compradores; 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, 
-    mappedBy = "administrador") 
-    private List<Producto> productos; 
+    
     
 }

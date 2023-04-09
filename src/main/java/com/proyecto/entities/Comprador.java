@@ -37,8 +37,7 @@ public class Comprador implements Serializable{
     private int id; 
 
     private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
+    private String apellidos;
     private String correo; 
     private String telefono; 
 
@@ -50,11 +49,7 @@ public class Comprador implements Serializable{
         HOMBRE, MUJER, OTRO
     }
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Proveedor proveedor;  
-
-   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "comprador")
-   List<Pedido> pedidos; 
+   
 
    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
    private Administrador administrador; 

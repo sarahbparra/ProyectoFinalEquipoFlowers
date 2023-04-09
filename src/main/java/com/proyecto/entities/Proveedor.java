@@ -40,8 +40,7 @@ public class Proveedor implements Serializable{
     private String telefono; 
     private String correo; 
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "proveedor")
-    private List<Comprador> compradores; 
+    
     
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
     private Administrador administrador; 
