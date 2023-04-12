@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Listado de Productos</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nombre Producto</th>
+                <th>Procedencia</th>
+                <th>Volumen</th>
+                <th>Peso</th>
+                <th>Descripcion</th>
+             
+
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr th:each="producto : ${productos}">
+                <td th:text="${producto.id}"></td>
+                <td th:text="${producto.nombre}"></td>
+                <td th:text="${producto.procedencia}"></td>
+                <td th:text="${producto.volumen}"></td>
+                <td th:text="${producto.peso}"></td>
+                <td th:text="${producto.descripcion}"></td>
+               <td>
+                <a href="@{/productos/frmActualizarProducto/}+${producto.id}">Modificar datos</a>
+                <a href="@{/productos/borrar/}+${producto.id}">Eliminar producto</a>
+               </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <a th:href="@{/productos/frmAltaProducto}">Datos para dar de alta a un producto</a>
+    </div>
+</body>
+</html>
+
