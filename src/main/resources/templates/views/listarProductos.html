@@ -173,13 +173,10 @@
         <td th:text="${producto.peso}"></td>
 
         <td>
-          <a th:href="@{/productos/frmActualizarProducto/}+${producto.id}"><button class="button-modificar">Modificar
+          <a th:href="@{/frmActualizarProducto/}+${producto.id}"><button class="button-modificar">Modificar
               datos</button></a>
           <a th:href="@{/productos/borrar/}+${producto.id}"><button class="button-eliminar">Eliminar
               usuario</button></a>
-
-          <a th:href="@{/admin/frmActualizarAdministrador/}+${administrador.id}">
-
 
         </td>
 
