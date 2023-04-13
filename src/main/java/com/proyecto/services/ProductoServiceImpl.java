@@ -1,14 +1,11 @@
 package com.proyecto.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.proyecto.dao.ProductoDao;
-import com.proyecto.entities.Pedido;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 
@@ -20,50 +17,39 @@ public class ProductoServiceImpl implements ProductoService{
 
     @Override
     public List<Producto> findAll() {
-        List<Producto> productos = new ArrayList<>();
-        for(int i=0; i<5; i++){
-            productos.add(new Producto(i, "codigo-prod-" + i, null, null, null));
-        }
-        return productos;
-        //return productoDao.findAll();
+        return productoDao.findAll();
     }
 
     @Override
     public Producto findById(int idProducto) {
-        return productoDao.findById(idProducto).get();
+       return productoDao.findById(idProducto).get();
     }
 
     @Override
-    @Transactional
     public void save(Producto producto) {
         productoDao.save(producto);
     }
 
     @Override
-    @Transactional
     public void deleteById(int idProducto) {
         productoDao.deleteById(idProducto);
     }
 
-    @Override
-    @Transactional
-    public void deleteByProveedor(Proveedor proveedor) {
-        productoDao.deleteByProveedor(proveedor);
-    }
-
-    @Override
-    public List<Producto> findByProveedor(Proveedor proveedor) {
-        return productoDao.findByProveedor(proveedor);
-    }
-
-    @Override
-    public List<Producto> findByPedido(Pedido pedido) {
-       return productoDao.findByPedido(pedido);
-    }
+    // @Override
+    // public void deleteByProveedor(Proveedor proveedor) {
+    //     productoDao.deleteByProveedor(proveedor);
+    // }
 
     // @Override
-    // public List<Producto> findByComprador(Comprador comprador) {
-    //     return productoDao.findByComprador(comprador);
+    // public List<Producto> findByProveedor(Proveedor proveedor) {
+    //    return productoDao.findByProveedor(proveedor);
     // }
+
+    @Override
+    public void delete(Producto producto) {
+        productoDao.delete(producto);
+    }
+
+   
     
 }

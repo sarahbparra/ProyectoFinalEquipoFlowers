@@ -28,35 +28,34 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Builder
 
-public class Comprador implements Serializable{
-    
-    public static final long serialVersionUID = 1L; 
+public class Comprador implements Serializable {
+
+    public static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) 
-    private int id; 
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    private String nombre; 
-    private String primerApellido; 
-    private String segundoApellido; 
-    private String correo; 
-    private String telefono; 
+    private String nombre;
+    private String primerApellido;
+    private String segundoApellido;
+    private String correo;
+    private String telefono;
 
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private LocalDate fechaNacimiento; 
+    private LocalDate fechaNacimiento;
 
-    private Genero genero; 
+    private Genero genero;
+
     public enum Genero {
         HOMBRE, MUJER, OTRO
     }
 
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Proveedor proveedor;  
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Proveedor proveedor;
 
-   @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST, mappedBy = "comprador")
-   List<Pedido> pedidos; 
-
-   @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-   private Administrador administrador; 
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
+    private Administrador administrador;
     
+
 }

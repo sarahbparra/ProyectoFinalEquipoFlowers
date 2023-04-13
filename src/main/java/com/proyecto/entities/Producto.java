@@ -31,14 +31,16 @@ public class Producto implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    private String codigoProducto;
+    private String nombre;
+    private String procedencia;
+    private String descripcion;
+    private double peso;
+    private double volumen;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Proveedor proveedor;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST) 
-    private Pedido pedido; 
-
+   
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Administrador administrador;
 

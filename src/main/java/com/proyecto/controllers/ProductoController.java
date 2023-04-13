@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -40,47 +41,47 @@ public ModelAndView listarProductos() {
     return mav;
 }
 
-// // /**Método de alta productos */
+// /**Método de alta productos */
 
-// @GetMapping("/AltaProducto")
-// public String AltaProducto(Model model) {
+@GetMapping("/AltaProducto")
+public String AltaProducto(Model model) {
 
-//     List<Proveedor> proveedores = proveedorService.findAll();
+    List<Proveedor> proveedores = proveedorService.findAll();
     
-//     Producto producto = new Producto();
+    Producto producto = new Producto();
 
-//     model.addAttribute("producto", producto);
-//     model.addAttribute("proveedores", proveedores);
+    model.addAttribute("producto", producto);
+    model.addAttribute("proveedores", proveedores);
 
-//     return "views/formularioAltaProducto";
+    return "views/formularioAltaProducto";
     
-// }
+}
 
-// //Método que  muestra el formulario que actualiza un procucto:
+//Método que  muestra el formulario que actualiza un procucto:
 
-// @GetMapping("/frmActualizar/{id}")
-// public String frmActualizarProducto(@PathVariable(name = "id") int idProducto, 
-// Model model) {
+@GetMapping("/frmActualizar/{id}")
+public String frmActualizarProducto(@PathVariable(name = "id") int idProducto, 
+Model model) {
 
-//    Producto producto = productoService.findById(idProducto);
+   Producto producto = productoService.findById(idProducto);
 
 
-//     List<Proveedor> proveedores = proveedorService.findAll();
+    List<Proveedor> proveedores = proveedorService.findAll();
 
-//     model.addAttribute("producto", producto);
+    model.addAttribute("producto", producto);
     
 
-//     return "views/formularioAltaProducto";
-// }
+    return "views/formularioAltaProducto";
+}
 
 
-// //Método que borra productos
+//Método que borra productos
 
-// @GetMapping("/borrar/{id}")
-// public String borrarProducto(@PathVariable(name = "id") int idProducto) {
+@GetMapping("/borrar/{id}")
+public String borrarProducto(@PathVariable(name = "id") int idProducto) {
 
-// productoService.delete(productoService.findById(idProducto));
+productoService.delete(productoService.findById(idProducto));
 
-// return "redirect:/listar";
-// }
+return "redirect:/listar";
+}
 }

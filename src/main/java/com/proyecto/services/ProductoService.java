@@ -2,7 +2,6 @@ package com.proyecto.services;
 
 import java.util.List;
 
-import com.proyecto.entities.Pedido;
 import com.proyecto.entities.Producto;
 import com.proyecto.entities.Proveedor;
 
@@ -12,8 +11,9 @@ public interface ProductoService {
     public Producto findById(int idProducto);
     public void save(Producto producto);
     public void deleteById(int idProducto);
-    public void deleteByProveedor(Proveedor proveedor);
-    public List<Producto> findByProveedor(Proveedor proveedor);
+    // public void deleteByProveedor(Proveedor proveedor);
+    // public List<Producto> findByProveedor(Proveedor proveedor);
+    public void delete(Producto producto);
     // public List<Producto> findByComprador(Comprador comprador);
-    public List<Producto> findByPedido (Pedido pedido);
+   
 }
