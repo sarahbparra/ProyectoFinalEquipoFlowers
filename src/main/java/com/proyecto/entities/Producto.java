@@ -37,6 +37,7 @@ public class Producto implements Serializable {
     private String peso;
     private String volumen;
     private String precio;
+    private String foto;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Proveedor proveedor;
