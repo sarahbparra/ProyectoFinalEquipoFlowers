@@ -1,69 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Información de Comprador</h1> 
+    <h1>Información de Comprador</h1>
 
-   <form th:object="${comprador}" 
-        th:action="@{/compradores/altaModificacionComprador}" 
-            method="post"
-                enctype="multipart/form-data">
+    <form th:object="${comprador}" th:action="@{/compradores/altaModificacionComprador}" method="post"
+        enctype="multipart/form-data">
 
-                <input type="hidden" name="id" th:value="${comprador.id}"> 
+        <input type="hidden" name="id" th:value="${comprador.id}">
 
-                <label for="nombre">Nombre: </label>
-                <input type="text" name="nombre" id="nombre" th:field="*{nombre}" required>
-            
-                <label for="primerApellido">Primer Apellido: </label>
-                <input type="text" name="primerApellido" id="primerApellido" th:field="*{primerApellido}" required>
-            
-                <label for="segundoApellido">Segundo Apellido: </label>
-                <input type="text" name="segundoApellido" id="segundoApellido" th:field="*{segundoApellido}" required>
+        <label for="nombre">Nombre: </label>
+        <input type="text" name="nombre" id="nombre" th:field="*{nombre}" required>
 
-                <label for="fechaNacimiento">Fecha de Nacimiento: </label>
-                <input type="date" name="fechaNacimiento" id="fechaNacimiento" th:field="*{fechaNacimiento}"
-                th:value="${comprador.fechaNacimiento}">
+        <label for="primerApellido">Primer Apellido: </label>
+        <input type="text" name="primerApellido" id="primerApellido" th:field="*{primerApellido}" required>
 
-                <label for="telefono">Número de teléfono: </label>
-                <input type="text" name="telefono" id="telefono" th:field="*{telefono}">
+        <label for="segundoApellido">Segundo Apellido: </label>
+        <input type="text" name="segundoApellido" id="segundoApellido" th:field="*{segundoApellido}" required>
 
-                <label for="correo">Correo electrónico: </label>
-                <input type="text" name="correo" id="correo" th:field="*{correo}">
+        <label for="fechaNacimiento">Fecha de Nacimiento: </label>
+        <input type="date" name="fechaNacimiento" id="fechaNacimiento" th:field="*{fechaNacimiento}"
+            th:value="${comprador.fechaNacimiento}">
 
-                <fieldset> 
-                    <legend>Género</legend>
-            
-                    <label for="hombre"> Hombre </label>
-                    <input type="radio" id="hombre" name="genero" value="HOMBRE" th:field="*{genero}" required>
-            
-                    <label for="mujer"> Mujer </label>
-                    <input type="radio" id="mujer" name="genero" value="MUJER" th:field="*{genero}" required>
-            
-                    <label for="otro"> Otro </label>
-                    <input type="radio" id="otro" name="genero" value="OTRO" th:field="*{genero}" required>
-            
-                </fieldset>
+        <label for="telefono">Número de teléfono: </label>
+        <input type="text" name="telefono" id="telefono" th:field="*{telefono}">
 
-                <label>Administrador: </label>
-                <select name="administrador" id="idAdministrador">
-                    <option></option>
-                    <option th:each="administrador : ${administradores}" 
-                    th:value="${administrador.id}"
-                    th:text="${administrador.id}"
-                    th:selected = "${comprador.administrador != null and administrador.id == comprador.administrador.id}"></option>
+        <label for="correo">Correo electrónico: </label>
+        <input type="text" name="correo" id="correo" th:field="*{correo}">
 
-                </select>
+        <fieldset>
+            <legend>Género</legend>
 
-                <label for="imagen">Foto: </label>
-                <input type="file" id="imagen" name="imagen">
-            
-                <input type="submit" value="Alta">
-            
-               </form>
+            <label for="hombre"> Hombre </label>
+            <input type="radio" id="hombre" name="genero" value="HOMBRE" th:field="*{genero}" required>
+
+            <label for="mujer"> Mujer </label>
+            <input type="radio" id="mujer" name="genero" value="MUJER" th:field="*{genero}" required>
+
+            <label for="otro"> Otro </label>
+            <input type="radio" id="otro" name="genero" value="OTRO" th:field="*{genero}" required>
+
+        </fieldset>
+
+        <label>Administrador: </label>
+        <select name="administrador" id="idAdministrador">
+            <option></option>
+            <option th:each="administrador : ${administradores}" th:value="${administrador.id}"
+                th:text="${administrador.id}"
+                th:selected="${comprador.administrador != null and administrador.id == comprador.administrador.id}">
+            </option>
+
+        </select>
+
+        <label for="imagen">Foto: </label>
+        <input type="file" id="imagen" name="imagen">
+
+        <input type="submit" value="Alta">
+
+    </form>
 </body>
+
 </html>

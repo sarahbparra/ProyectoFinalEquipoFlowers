@@ -34,8 +34,9 @@ public class Producto implements Serializable {
     private String nombre;
     private String procedencia;
     private String descripcion;
-    private double peso;
-    private double volumen;
+    private String peso;
+    private String volumen;
+    private String precio;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     private Proveedor proveedor;
