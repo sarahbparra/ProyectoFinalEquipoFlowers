@@ -75,7 +75,7 @@ public class AdministradorController {
     }
 
     // Método para que almacena los datos del administrador
-     // FUNCIONA
+    // FUNCIONA
     @PostMapping("/altaModificacionAdministrador")
     public String altaModificacionAdministrador
     // (@ModelAttribute Administrador administrador) {
@@ -84,8 +84,10 @@ public class AdministradorController {
         return "redirect:/admin/listarAdministrador";
     }
 
+   
+
     // Método para poder actualizar los datos de un administrador
- // FUNCIONA
+    // FUNCIONA
     @GetMapping("/frmActualizarAdministrador/{id}")
     public String frmActualizaradministrador(@PathVariable(name = "id") int id, Model model) {
 

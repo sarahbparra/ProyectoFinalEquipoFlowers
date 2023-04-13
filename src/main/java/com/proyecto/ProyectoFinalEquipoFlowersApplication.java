@@ -26,7 +26,7 @@ public class ProyectoFinalEquipoFlowersApplication implements CommandLineRunner 
 
 	@Autowired
 	private CompradorService compradorService;
-	
+
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoFinalEquipoFlowersApplication.class, args);
 	}
@@ -41,41 +41,53 @@ public class ProyectoFinalEquipoFlowersApplication implements CommandLineRunner 
 		 */
 
 		administradorService.save(Administrador.builder()
-				.nombre("Admin1")
+				.nombre("Celia Cava Ruíz")
 				.correo("admin1@gmail.com")
 				.telefono("telAdmin1")
 				.build());
 
 		administradorService.save(Administrador.builder()
-				.nombre("Admin2")
+				.nombre("Sarah Benabidi Parra")
 				.correo("admin2@gmail.com")
 				.telefono("telAdmin2")
 				.build());
 
-		//Registros agregados para Comprador. 
+		administradorService.save(Administrador.builder()
+				.nombre("Irene González Moreno")
+				.correo("admin2@gmail.com")
+				.telefono("telAdmin2")
+				.build());
+
+		administradorService.save(Administrador.builder()
+				.nombre("Zineb Afkir")
+				.correo("admin2@gmail.com")
+				.telefono("telAdmin2")
+				.build());
+
+		// Registros agregados para Comprador.
 
 		compradorService.save(Comprador.builder()
-		.id(1)
-		.nombre("María")
-		.primerApellido("García")
-		.segundoApellido("López")
-		.fechaNacimiento(LocalDate.of(2000, Month.APRIL, 6))
-		.genero(Genero.MUJER)
-		.telefono("618 331 251")
-		.correo("mariaGL@gmail.com")
-		.administrador(administradorService.findById(1))
-		.build());
+				.id(1)
+				.nombre("María")
+				.primerApellido("García")
+				.segundoApellido("López")
+				.fechaNacimiento(LocalDate.of(2000, Month.APRIL, 6))
+				.genero(Genero.MUJER)
+				.telefono("618 331 251")
+				.correo("mariaGL@gmail.com")
+				.administrador(administradorService.findById(1))
+				.build());
 
 		compradorService.save(Comprador.builder()
-		.id(2)
-		.nombre("Juana")
-		.primerApellido("García")
-		.segundoApellido("López")
-		.fechaNacimiento(LocalDate.of(1998, Month.APRIL, 6))
-		.genero(Genero.MUJER)
-		.telefono("666 333 999")
-		.correo("juanaGL@gmail.com")
-		.administrador(administradorService.findById(1))
-		.build());
+				.id(2)
+				.nombre("Juana")
+				.primerApellido("García")
+				.segundoApellido("López")
+				.fechaNacimiento(LocalDate.of(1998, Month.APRIL, 6))
+				.genero(Genero.MUJER)
+				.telefono("666 333 999")
+				.correo("juanaGL@gmail.com")
+				.administrador(administradorService.findById(1))
+				.build());
 	}
 }
