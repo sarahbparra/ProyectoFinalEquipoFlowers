@@ -17,6 +17,15 @@ public class WebController {
         return "views/home";
     }
 
+    @GetMapping("/homeAdmin")
+    public String homeAdmin() {
+        return "views/homeAdmin";
+    }
+
+    @GetMapping("/acceder")
+    public String acceder() {
+        return "views/acceder";
+    }
 //     @GetMapping("/listarProveedores")
 //   public String listarProveedores() {
 //     return "listarProveedores"; //nombre de la vista a devolver

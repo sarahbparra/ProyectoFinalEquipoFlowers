@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FLOWERS - Tienda Online</title>
+    <style>
+        header {
+            background-color: #5b4427;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 35vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        main {
+            background-color: #e6d0b4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+
+            font-family: Arial, sans-serif;
+            justify-content: center;
+            vertical-align: center;
+        }
+
+        form {
+            background-color: #af9e87;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            font-size: 4em;
+            text-align: center;
+            margin-bottom: 0.5em;
+            color: black;
+
+
+        }
+
+        h2 {
+            font-size: 0.5em;
+            text-align: center;
+            margin-top: 0;
+            color: #8b5a2b;
+        }
+
+        h3 {
+            font-size: 1-em;
+            text-align: center;
+            /* margin-top: 0.1em; */
+            /* margin-bottom: 1em; */
+            color: #8b5a2b;
+        }
+
+        p {
+            font-size: 1.5em;
+            text-align: center;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+        p2 {
+            font-size: 1em;
+            text-align: center;
+            margin-top: 2em;
+            margin-bottom: 1em;
+        }
+
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 1em;
+            gap: 1em;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            vertical-align: center;
+        }
+
+        button {
+            font-size: 1em;
+            padding: 0.5em 1em;
+            margin: 0 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            justify-content: center;
+        }
+
+        .button-conoce {
+            background-color: #ca8f54;
+            color: white;
+
+            margin-bottom: 1em;
+
+        }
+
+        .button-consulta {
+            background-color: #9b6a38;
+            color: white;
+
+        }
+
+        .button-por-proveedor {
+            background-color: #91754d;
+            color: white;
+
+        }
+
+        .button-por-producto {
+            background-color: #7c502f;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>TIENDA FLOWERS</h1>
+        <h2 style="font-size: 1em;">Bring to you by FLOWERS</h2>
+
+        <nav>
+            <ul>
+                <div class="button-container"></div>
+                <a href="/acceder"><button class="button-conoce">Acceder</button></a>
+                <a href="/proveedores/listar"><button class="button-por-proveedor">Comprar por proveedor</button></a>
+                <a href="/productos/listar"><button class="button-por-producto">Comprar por producto</button></a>
+
+                </div>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+
+        <section>
+            <p2>Por favor, registrate para continuar</p2>
+        </section>
+        <section>
+            <ul>
+            <form>
+                <p>Log in</p>
+                <label for="nombre">Usuario: </label>
+                <input type="text">
+                <label for="nombre">Contraseña: </label>
+                <input type="text">
+            </form>
+        </ul>
+
+       <ul>
+            <form>
+                <p>
+                    Sing up
+                </p>
+
+            </form>
+        </ul>
+        </section>
+
+        <section>
+
+            <div class="button-container"></div>
+            <a href="/homeAdmin"><button class="button-conoce">Acceder</button></a>
+            <a href="/home"><button class="button-por-proveedor">Volver</button></a>
+
+            </div>
+
+        </section>
+    </main>
+    <footer>
+        <p>Derechos reservados &copy; 2023 Tienda Online</p>
+    </footer>
+</body>
+
+</html>
