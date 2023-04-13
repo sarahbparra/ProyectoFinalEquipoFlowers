@@ -2,7 +2,6 @@ package com.proyecto.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -13,7 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

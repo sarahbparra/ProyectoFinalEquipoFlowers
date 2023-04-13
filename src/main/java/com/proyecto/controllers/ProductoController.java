@@ -1,21 +1,13 @@
 package com.proyecto.controllers;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.List;
-import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.proyecto.entities.Producto;
@@ -26,7 +18,7 @@ import com.proyecto.services.ProveedorService;
 @Controller
 @RequestMapping("/productos")
 public class ProductoController {
-    private static final Logger LOG = Logger.getLogger("ProductoController");
+    // private static final Logger LOG = Logger.getLogger("ProductoController");
 
     @Autowired
     private ProductoService productoService;
@@ -88,23 +80,4 @@ public class ProductoController {
         return "redirect:/listar";
     }
 
-@PostMapping("/altaModificacionProducto")
-public String altaproducto(@ModelAttribute Producto producto,
-@RequestParam(name = "imagen") MultipartFile imagen) {
-if(!imagen.isEmpty()) {
-
-try {String rutaAbsoluta = "/home/irene/recursos/images";
-byte[] imagenEnBytes = imagen.getBytes();
-//Ruta completa: 
-Path rutaCompleta = Paths.get(rutaAbsoluta + "/" + imagen.getOriginalFilename());
-//Guardamos la imágen en el file system 
-Files.write(rutaCompleta, imagenEnBytes);
-//Asociar la imágen con el objeto producto que se va a guardar 
-producto.setFoto(imagen.getOriginalFilename());
-}
-productoService.save(producto);
-return"redirect:/listar";
-
-}
-}
 }
