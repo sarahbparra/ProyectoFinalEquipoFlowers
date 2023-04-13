@@ -10,6 +10,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.proyecto.entities.Administrador;
 import com.proyecto.entities.Comprador;
+import com.proyecto.entities.Producto;
 import com.proyecto.entities.Comprador.Genero;
 import com.proyecto.services.AdministradorService;
 import com.proyecto.services.CompradorService;
@@ -89,5 +90,14 @@ public class ProyectoFinalEquipoFlowersApplication implements CommandLineRunner 
 				.correo("juanaGL@gmail.com")
 				.administrador(administradorService.findById(1))
 				.build());
+
+		productoService.save(Producto.builder()
+		.id(1).nombre("Queso Curado").procedencia("Burgos")
+
+				.descripcion("Procedencia de la leche: oveja").volumen("0.00").peso("1.55").precio("12.34").build());
+
+		productoService.save(Producto.builder().id(2).nombre("Vino Tinto").procedencia("Jumilla")
+
+				.descripcion("Año de cosecha: 2017").volumen("750.00").peso("").precio("13.50").build());
 	}
 }

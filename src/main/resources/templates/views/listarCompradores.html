@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
+
 
 <body>
   <title>¡Únete a nuestra comunidad!</title>
@@ -160,38 +162,41 @@
             </tr>
         </thead>
 
-        <tbody>
+    <tbody>
 
-            <tr th:each=" comprador : ${compradores}">
-                <td th:text="${comprador.id}"></td>
-                <td th:text="${comprador.nombre}"></td>
-                <td th:text="${comprador.primerApellido}"></td>
-                <td th:text="${comprador.segundoApellido}"></td>
-                <td th:text="${comprador.fechaNacimiento}"></td>
-                <td th:text="${comprador.genero}"></td>
-                <td th:text="${comprador.telefono}"></td>
-                <td th:text="${comprador.correo}"></td>
-                <td th:text="${comprador.administrador.id}"></td>
+      <tr th:each=" comprador : ${compradores}">
+        <td th:text="${comprador.id}"></td>
+        <td th:text="${comprador.nombre}"></td>
+        <td th:text="${comprador.primerApellido}"></td>
+        <td th:text="${comprador.segundoApellido}"></td>
+        <td th:text="${comprador.fechaNacimiento}"></td>
+        <td th:text="${comprador.genero}"></td>
+        <td th:text="${comprador.telefono}"></td>
+        <td th:text="${comprador.correo}"></td>
+        <td th:text="${comprador.administrador.id}"></td>
 
-                <td>
-                    <a th:href="@{/compradores/frmActualizarComprador/}+${comprador.id}">Modificar datos</a>
-                    <a th:href="@{/compradores/borrar/}+${comprador.id}">Eliminar usuario</a>
-                </td>
+        <td>
+          <a th:href="@{/compradores/frmActualizarComprador/}+${comprador.id}"><button
+              class="button-modificar">Modificar datos</button></a>
+          <a th:href="@{/compradores/borrar/}+${comprador.id}"><button class="button-eliminar">Eliminar
+              usuario</button></a>
+        </td>
 
-            </tr>
+      </tr>
 
-        </tbody>
+    </tbody>
 
-     </table>   
-    
+  </table>
 
-     <div class="button-container">
-        <a th:href="@{/compradores/frmAltaComprador}"> <button class="button-alta">DAR DE ALTA</button>
-        </a>
-      
-        <a th:href="@{/home}">
-          <button class="button-volver">VOLVER</button>
-        </a>
-      </div>
+
+  <div class="button-container">
+    <a th:href="@{/compradores/frmAltaComprador}"> <button class="button-alta">DAR DE ALTA</button>
+    </a>
+
+    <a th:href="@{/home}">
+      <button class="button-volver">VOLVER</button>
+    </a>
+  </div>
 </body>
+
 </html>
